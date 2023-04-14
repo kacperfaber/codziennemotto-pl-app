@@ -32,3 +32,6 @@ node_modules/
 
 # idea
 .idea/
+
+# webpack-compile
+/www/dist/compile-js/
