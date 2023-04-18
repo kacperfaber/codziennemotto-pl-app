@@ -13,8 +13,11 @@
   ],
   "author": "Kacper Faber",
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "mithril": "^2.2.2"
+  },
   "devDependencies": {
+    "@types/mithril": "^2.0.12",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.79.0",
