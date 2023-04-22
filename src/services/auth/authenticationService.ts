@@ -1,5 +1,7 @@
 import {AuthenticationApi} from "../../api/auth/authenticationApi";
 import {StorageService} from "../storage/storageService";
+import {User} from "../user/user";
+import {withToken} from "../withToken";
 
 export interface AuthResult {
     id: number;
@@ -16,5 +18,11 @@ class AuthenticationService {
         StorageService.setCurrentAuth(result);
 
         return true;
+    }
+
+    async current(): Promise<User | undefined> {
+        return await withToken(function (token: string) {
+            return AuthenticationApi.current(token);
+        });
     }
 }

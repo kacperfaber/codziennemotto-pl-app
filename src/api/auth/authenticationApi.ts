@@ -1,24 +1,25 @@
 import {AuthResult} from "../../services/auth/authenticationService";
 import {Config} from "../../config/config";
-import {request} from "mithril";
+import {httpRequest} from "../httpRequest";
+import {User} from "../../services/user/user";
 
 export class AuthenticationApi {
 
-    static async current(token: string): Promise<User | null> {
+    static async current(token: string): Promise<User | undefined> {
         function getUrl(): string {
             return Config.apiUrl + "/current";
         }
 
         try {
-            await request({method: 'GET', headers: {"Authorization": token}, url: getUrl()});
+            return await httpRequest({method: 'GET', headers: {"Authorization": token}, url: getUrl()});
         }
 
         catch (e) {
-            return null;
+            return undefined;
         }
     }
 
-    static async authenticate(login: string, password: string): Promise<AuthResult | null> {
+    static async authenticate(login: string, password: string): Promise<AuthResult | undefined> {
         function getUrl(): string {
             return Config.apiUrl + "/auth";
         }
@@ -28,7 +29,7 @@ export class AuthenticationApi {
         }
 
         try {
-            const res = await request(
+            const res = await httpRequest(
                 {
                     method: "POST",
                     url: getUrl(),
@@ -40,7 +41,7 @@ export class AuthenticationApi {
         }
 
         catch (e) {
-            return null;
+            return undefined;
         }
 
     }
