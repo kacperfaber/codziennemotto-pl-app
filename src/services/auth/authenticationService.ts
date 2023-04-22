@@ -1,5 +1,5 @@
-import {request} from "mithril";
-import {Config} from "../../config/config";
+import {AuthenticationApi} from "../../api/auth/authenticationApi";
+import {StorageService} from "../storage/storageService";
 
 export interface AuthResult {
     id: number;
@@ -9,29 +9,12 @@ export interface AuthResult {
 }
 
 class AuthenticationService {
-    async authenticate(username: string, password: string): Promise<AuthResult | null> {
-        function getUrl(): string {
-            return Config.apiUrl + "/auth";
-        }
+    async authenticate(username: string, password: string): Promise<boolean> {
+        const result = await AuthenticationApi.authenticate(username, password);
+        if (!result) return false;
 
-        function constructBody(): { login: string, password: string } {
-            return {login: username, password: password};
-        }
+        StorageService.setCurrentAuth(result);
 
-        try {
-            const res = await request(
-                {
-                    method: "POST",
-                    url: getUrl(),
-                    body: constructBody()
-                }
-            );
-
-            return res as AuthResult;
-        }
-
-        catch (e) {
-            return null;
-        }
+        return true;
     }
 }
