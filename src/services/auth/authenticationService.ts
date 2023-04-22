@@ -10,8 +10,8 @@ export interface AuthResult {
     token: string;
 }
 
-class AuthenticationService {
-    async authenticate(username: string, password: string): Promise<boolean> {
+export class AuthenticationService {
+    static async authenticate(username: string, password: string): Promise<boolean> {
         const result = await AuthenticationApi.authenticate(username, password);
         if (!result) return false;
 
@@ -20,7 +20,7 @@ class AuthenticationService {
         return true;
     }
 
-    async current(): Promise<User | undefined> {
+    static async current(): Promise<User | undefined> {
         return await withToken(function (token: string) {
             return AuthenticationApi.current(token);
         });
