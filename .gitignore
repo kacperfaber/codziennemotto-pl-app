@@ -35,3 +35,7 @@ node_modules/
 
 # webpack-compile
 /www/dist/compile-js/
+
+# fontello
+.fontello-session
+*/.fontello-session
