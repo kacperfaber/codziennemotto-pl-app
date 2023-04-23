@@ -56,3 +56,12 @@ body, html {
 #app_container {
     margin-top: 10vh;
 }
+
+#app_welcome {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
