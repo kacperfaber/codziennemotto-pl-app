@@ -2,11 +2,12 @@ body, html {
     margin: 0;
     padding: 0;
     color: white;
+    background: #222;
 }
 
 #app_navbar {
     width: 100%;
-    height: 6vh;
+    height: 8vh;
     z-index: 1;
 
     position: fixed;
@@ -14,6 +15,8 @@ body, html {
     top: 0;
 
     background: #222;
+
+    border-bottom: 2px solid black;
 
     display: flex;
     justify-content: center;
@@ -28,4 +31,24 @@ body, html {
     transform: translateX(-50%) translateY(-50%);
 
     font-size: 2.5vh;
+}
+
+#app_navbar__menu_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 6vh;
+    height: 6vh;
+
+    position: absolute;
+    left: 1vh;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#app_navbar__menu_button__icon {
+    font-size: 2.5vh;
+    color: white;
 }
