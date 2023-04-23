@@ -11,6 +11,7 @@ export interface AuthResult {
 }
 
 export class AuthenticationService {
+    // TODO: Replace it with authenticate that returns then/catch instead always then...
     static async authenticate(username: string, password: string): Promise<boolean> {
         const result = await AuthenticationApi.authenticate(username, password);
         if (!result) return false;
