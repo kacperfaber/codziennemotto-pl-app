@@ -17,7 +17,9 @@ export const Login = function () {
 
     function onSuccess() {}
 
-    function onFailed() {}
+    function onFailed() {
+        document.getElementById("app_login__login_error")!!.classList.remove("disabled");
+    }
 
     function onLoginChange(e: Event) {
         state.login = (e.target as HTMLInputElement).value;
@@ -42,6 +44,12 @@ export const Login = function () {
                         m(".form-group.my-3",
                             m("label", {'for': 'inputPassword'}, t("login.enter_password")),
                             m("input#inputPassword[type=password].form-control", {onchange: onPasswordChange})
+                        ),
+
+                        m(".form-group.mb-3",
+
+                            m("label#app_login__login_error.disabled", {style: {color: 'red'}}, t("login.login_error"))
+
                         ),
 
                         m("button.btn.btn-primary", {type: 'submit'}, t("login.submit"))
