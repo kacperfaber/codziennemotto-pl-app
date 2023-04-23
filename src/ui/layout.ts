@@ -8,4 +8,14 @@ export class Layout {
             m("#app_container", node)
         );
     }
+
+    static center(node: Vnode) {
+        return m(".container",
+            m(".row",
+                m(".col-12.col-lg-6.offset-lg-3",
+                    node
+                )
+            )
+        )
+    }
 }
