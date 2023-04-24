@@ -69,3 +69,32 @@ body, html {
 #app_login__login_error.disabled {
     display: none;
 }
+
+#app_sidenav {
+    z-index: 999;
+
+    background: black;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+
+    left: -100vw;
+    top: 0;
+
+    transition: left 0.2s ease-in-out;
+}
+
+#app_sidenav.active {
+    left: 0;
+    top: 0;
+}
+
+#app_sidenav__close {
+    position: absolute;
+    right: 5vw;
+    top: 5vh;
+    font-size: 3vh;
+    color: white;
+}
