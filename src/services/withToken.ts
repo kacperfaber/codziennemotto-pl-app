@@ -5,3 +5,17 @@ export async function withToken<T>(success: (token: string) => T): Promise<T | u
     if (!token) return undefined;
     return success(token);
 }
+
+export async function withTokenAsync<T>(success: (token: string) => T): Promise<T> {
+    return new Promise(
+        (resolve, reject) => {
+            const token = StorageService.getCurrentToken();
+            if (!token) {
+                reject();
+                return;
+            }
+            const res = success(token);
+            resolve(res);
+        }
+    );
+}
