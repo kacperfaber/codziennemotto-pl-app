@@ -14,4 +14,14 @@ export class TextSetApi {
             url: getUrl(id)
         });
     }
+
+    static async getMine(token: string): Promise<Array<TextSet>> {
+        const url = `${Config.apiUrl}/text-set/where-i-am-owner`;
+        return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
+    }
+
+    static async getNotMine(token: string): Promise<Array<TextSet>> {
+        const url = `${Config.apiUrl}/text-set/where-i-am-reader`;
+        return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
+    }
 }
