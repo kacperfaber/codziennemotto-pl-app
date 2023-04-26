@@ -3,19 +3,17 @@ export class SideNavCtrl {
         return document.getElementById("app_sidenav")!!;
     }
 
-    private static getClassName(): string {
-        return "active";
-    }
+    private static className = "active";
 
     static toggle() {
-        SideNavCtrl.getElement().classList.toggle(SideNavCtrl.getClassName());
+        SideNavCtrl.getElement().classList.toggle(SideNavCtrl.className);
     }
 
     static open() {
-        SideNavCtrl.getElement().classList.add(SideNavCtrl.getClassName());
+        SideNavCtrl.getElement().classList.add(SideNavCtrl.className);
     }
 
     static close() {
-        SideNavCtrl.getElement().classList.remove(SideNavCtrl.getClassName());
+        SideNavCtrl.getElement().classList.remove(SideNavCtrl.className);
     }
 }
