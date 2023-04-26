@@ -69,3 +69,49 @@ body, html {
 #app_login__login_error.disabled {
     display: none;
 }
+
+#app_sidenav {
+    /* Because #app_sidenav__close_button is absolute... */
+    padding-top: 10vh;
+
+    z-index: 999;
+
+    background: black;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+
+    left: -100vw;
+    top: 0;
+
+    transition: left 0.2s ease-in-out;
+}
+
+#app_sidenav.active {
+    left: 0;
+    top: 0;
+}
+
+#app_sidenav__links {
+    width: 100%;
+    text-align: center;
+}
+
+.app-sidenav-link {
+    width: 100%;
+    padding: 25px;
+}
+
+.app-sidenav-link-button {
+    width: 100%;
+    font-size: 2.5vh;
+}
+
+#app_sidenav__close_button {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    font-size: 2.5vh;
+}
