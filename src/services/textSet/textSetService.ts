@@ -17,7 +17,7 @@ export class TextSetService {
     static async getNotMine(): Promise<Array<TextSet>> {
         return withTokenAsync(async (token) => {
             const mine = await TextSetApi.getNotMine(token);
-            TextSetStore.setMine(mine);
+            TextSetStore.mine(mine);
             return mine;
         });
     }

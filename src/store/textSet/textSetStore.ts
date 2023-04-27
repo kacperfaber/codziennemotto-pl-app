@@ -1,15 +1,8 @@
 import {TextSet} from "../../services/textSet/textSet";
+import stream from "mithril/stream";
 
 class _TextSetStore {
-    private mine: Array<TextSet> | undefined = undefined;
-
-    getMine(): Array<TextSet> | undefined {
-        return this.mine;
-    }
-
-    setMine(d: Array<TextSet> | undefined): void {
-        this.mine = d;
-    }
+    public mine = stream<TextSet[] | undefined>(undefined);
 }
 
 export const TextSetStore = new _TextSetStore();
