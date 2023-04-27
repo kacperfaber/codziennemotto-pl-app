@@ -16,7 +16,7 @@ export function AllTextSet() {
                 m(".row",
                     m(".col-12.col-lg-4.offset-lg-1",
                         m("h3", t("all.mine-text-sets")),
-                        m(TextSetList, {items: vnode.attrs.mine})
+                        m(TextSetList, )
                     )
                 )
             )
