@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     color: white;
-    background: #222;
+    background: #111;
 }
 
 #app_navbar {
@@ -125,6 +125,7 @@ body, html {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #222;
 }
 
 .text-set-list-item:nth-child(even) {
@@ -133,4 +134,22 @@ body, html {
 
 .text-set-list-item:hover{
     background: #333;
+}
+
+#app_all_text_set__mine__header {
+    color: lightgrey;
+    text-align: center;
+}
+
+#app_all_text_set__mine {
+    margin-bottom: 30px;
+}
+
+.no-data {
+    width: 100%;
+    text-align: center;
+}
+
+.no-data-icon {
+    font-size: 10vh;
 }
