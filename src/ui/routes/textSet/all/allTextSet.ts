@@ -4,19 +4,27 @@ import {Layout} from "../../../layout";
 import {TextSetList} from "../../../components/textSet/list/TextSetList";
 import {TextSet} from "../../../../services/textSet/textSet";
 import {t} from "i18next";
-
-export interface AllTextSetAttrs {
-    mine: Array<TextSet>; // TODO: | undefined or not?
-}
+import {TextSetStore} from "../../../../store/textSet/textSetStore";
+import {subscribeStream} from "../../../subscribeStream";
 
 export function AllTextSet() {
+    let mine = TextSetStore.mine();
+
     return {
-        view: (vnode: Vnode<AllTextSetAttrs>) => Layout.free(
+        oninit: () => {
+            subscribeStream(TextSetStore.mine);
+        },
+
+        onbeforeupdate: () => {
+            mine = TextSetStore.mine();
+        },
+
+        view: () => Layout.free(
             m(".container",
                 m(".row",
                     m(".col-12.col-lg-4.offset-lg-1",
                         m("h3", t("all.mine-text-sets")),
-                        m(TextSetList, )
+                        mine === undefined ? m("h5", "break danych") : m(TextSetList, {items: mine})
                     )
                 )
             )
