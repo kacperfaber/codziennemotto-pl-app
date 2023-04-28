@@ -1,6 +1,8 @@
 import {AuthenticationService} from "./services/auth/authenticationService";
 import route from "mithril/route";
 
+// TODO: Create RouteSecurity and some other things profile-dependant. I want to try with filename 'routes.{dev}.ts'.
+
 export class RouteSecurity {
     static async authenticatedOrWelcome() {
         if (!await AuthenticationService.current()) route.set(Links.welcome);
