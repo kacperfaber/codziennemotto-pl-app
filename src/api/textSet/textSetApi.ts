@@ -24,4 +24,6 @@ export class TextSetApi {
         const url = `${Config.apiUrl}/text-set/where-i-am-reader`;
         return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
     }
+
+    static async getPastTexts(textSetId: number, token: string): Promise<Array<Text>>
 }

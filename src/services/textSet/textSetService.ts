@@ -2,6 +2,8 @@ import {TextSet} from "./textSet";
 import {withTokenAsync} from "../withToken";
 import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
+import {Text} from "./text";
+import {Config} from "../../config/config";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
@@ -44,5 +46,11 @@ export class TextSetService {
         }
 
         return data;
+    }
+
+    static async fetchPastTexts(textSetId: number, forceRefresh=false): Promise<Array<Text>> {
+        const url = `${Config.apiUrl}/text-set/`;
+
+        // TODO: Here I want a endpoint to fetch all possible for me...
     }
 }
