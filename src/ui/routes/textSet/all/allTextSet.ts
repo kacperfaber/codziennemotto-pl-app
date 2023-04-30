@@ -40,24 +40,17 @@ function AllTextSet_WithData(): Mithril.Component<AllTextSet_WithDataAttrs> {
 }
 
 export function AllTextSet() {
-    let mine = TextSetStore.mine();
-    let notMine = TextSetStore.notMine();
-
-    function validateData(): boolean {
+    function validateData(mine: TextSet[] | undefined, notMine: TextSet[] | undefined): boolean {
         return (mine !== undefined && notMine !== undefined);
     }
 
     return new class extends BaseStreamComponent<any, any> {
-        override streams = [TextSetStore.mine, TextSetStore.notMine];
-
-        override onbeforeupdate(): boolean | void {
-            notMine = TextSetStore.notMine();
-            mine = TextSetStore.mine();
-        }
+        mine = this.useStream(TextSetStore.mine);
+        notMine = this.useStream(TextSetStore.notMine);
 
         override view() {
             return Layout.free(
-                validateData() ? m(AllTextSet_WithData, {mine: mine!!, notMine: notMine!!}) : m(NoData)
+                validateData(this.mine.value, this.notMine.value) ? m(AllTextSet_WithData, {mine: this.mine.value!!, notMine: this.notMine.value!!}) : m(NoData)
             )
         }
     }
