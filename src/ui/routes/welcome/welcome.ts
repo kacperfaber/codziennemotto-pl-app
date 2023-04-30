@@ -5,7 +5,7 @@ import route from "mithril/route";
 import {BaseComponent} from "../../base/baseComponent";
 
 export const Welcome = function () {
-    return new class extends BaseComponent {
+    return new class extends BaseComponent<any, any> {
         override view() {
             return Layout.free(
                 m("#app_welcome",

@@ -47,7 +47,7 @@ export function AllTextSet() {
         return (mine !== undefined && notMine !== undefined);
     }
 
-    return new class extends BaseStreamComponent {
+    return new class extends BaseStreamComponent<any, any> {
         override streams = [TextSetStore.mine, TextSetStore.notMine];
 
         override onbeforeupdate(): boolean | void {

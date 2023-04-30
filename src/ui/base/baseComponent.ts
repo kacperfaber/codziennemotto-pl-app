@@ -2,36 +2,38 @@ import Mithril, {Vnode} from "mithril";
 import Stream from "mithril/stream";
 import {subscribeStream} from "../subscribeStream";
 
-export class BaseComponent implements Mithril.Component {
-    onbeforeremove(vnode: Mithril.VnodeDOM<{}, Mithril._NoLifecycle<this & {}>>): Promise<any> | void {
+export class BaseComponent<TAttrs, TState> implements Mithril.Component<TAttrs, TState> {
+    onbeforeremove(vnode: Mithril.VnodeDOM<TAttrs, Mithril._NoLifecycle<this & TState>>): Promise<any> | void {
         return undefined;
     }
 
-    onbeforeupdate(vnode: Mithril.Vnode<{}, Mithril._NoLifecycle<this & {}>>, old: Mithril.VnodeDOM<{}, Mithril._NoLifecycle<this & {}>>): boolean | void {
+    onbeforeupdate(vnode: Mithril.Vnode<TAttrs, Mithril._NoLifecycle<this & TState>>, old: Mithril.VnodeDOM<TAttrs, Mithril._NoLifecycle<this & TState>>): boolean | void {
         return undefined;
     }
 
-    oncreate(vnode: Mithril.VnodeDOM<{}, Mithril._NoLifecycle<this & {}>>): any {
+    oncreate(vnode: Mithril.VnodeDOM<TAttrs, Mithril._NoLifecycle<this & TState>>): any {
     }
 
-    oninit(vnode: Mithril.Vnode<{}, Mithril._NoLifecycle<this & {}>>): any {
+    oninit(vnode: Mithril.Vnode<TAttrs, Mithril._NoLifecycle<this & TState>>): any {
     }
 
-    onremove(vnode: Mithril.VnodeDOM<{}, Mithril._NoLifecycle<this & {}>>): any {
+    onremove(vnode: Mithril.VnodeDOM<TAttrs, Mithril._NoLifecycle<this & TState>>): any {
     }
 
-    onupdate(vnode: Mithril.VnodeDOM<{}, Mithril._NoLifecycle<this & {}>>): any {
+    onupdate(vnode: Mithril.VnodeDOM<TAttrs, Mithril._NoLifecycle<this & TState>>): any {
     }
 
-    view(vnode: Mithril.Vnode<{}, Mithril._NoLifecycle<this & {}>>): Mithril.Children | void | null {
+    view(vnode: Mithril.Vnode<TAttrs, Mithril._NoLifecycle<this & TState>>): Mithril.Children | void | null {
         return undefined;
     }
+
 }
 
-export class BaseStreamComponent extends BaseComponent {
+export class BaseStreamComponent<TAttrs, TState> extends BaseComponent<TAttrs, TState> {
     public streams: Stream<any>[] = [];
 
-    override oninit(vnode: Mithril.Vnode<{}, Mithril._NoLifecycle<this & {}>>): any {
+    oninit(vnode: Mithril.Vnode<TAttrs, Mithril._NoLifecycle<this & TState>>): any {
         subscribeStream(...this.streams);
+        return super.oninit(vnode);
     }
 }

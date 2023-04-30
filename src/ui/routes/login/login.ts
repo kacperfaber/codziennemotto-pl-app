@@ -30,7 +30,7 @@ export const Login = function () {
         state.password = (e.target as HTMLInputElement).value;
     }
 
-    return new class extends BaseComponent {
+    return new class extends BaseComponent<any, any> {
         override view() {
             return Layout.free(
                 m("#app_login",
