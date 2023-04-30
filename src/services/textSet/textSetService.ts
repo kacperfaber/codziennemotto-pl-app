@@ -3,7 +3,6 @@ import {withTokenAsync} from "../withToken";
 import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 import {Text} from "./text";
-import {Config} from "../../config/config";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
@@ -48,9 +47,31 @@ export class TextSetService {
         return data;
     }
 
-    static async fetchPastTexts(textSetId: number, forceRefresh=false): Promise<Array<Text>> {
-        const url = `${Config.apiUrl}/text-set/`;
+    /**
+     * @param textSetId TextSet's id
+     * @param forceRefresh Should refresh
+     * @throws Error, if TextSet with id doesn't exist in TextSetStore and is 'forceRefresh'
+     * @return Promise of Text, from TextSet from store if defined. If it's not fetch from API.
+     */
+    static async getAllVisibleTexts(textSetId: number, forceRefresh: boolean = false): Promise<Text[]> {
+        const fetchTexts = async (id: number) => await TextSetService.fetchAllVisibleTexts(id);
 
-        // TODO: Here I want a endpoint to fetch all possible for me...
+        const textSet = await TextSetStore.getTextSet(textSetId);
+
+        if (!textSet) {
+            if (forceRefresh) throw new Error("Can't refresh TextSet with texts, if TextSet doesn't exist in store.")
+
+            return await fetchTexts(textSetId);
+        }
+
+        else {
+            if (textSet.texts && !forceRefresh) return textSet.texts;
+            textSet.texts = await fetchTexts(textSetId);
+            return textSet.texts;
+        }
+    }
+
+    static async fetchAllVisibleTexts(textSetId: number): Promise<Array<Text>> {
+        return withTokenAsync(token => TextSetApi.getAllVisibleTexts(token, textSetId));
     }
 }

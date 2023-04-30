@@ -1,6 +1,7 @@
 import {TextSet} from "../../services/textSet/textSet";
 import {Config} from "../../config/config";
 import {httpRequest} from "../httpRequest";
+import {Text} from "../../services/textSet/text";
 
 export class TextSetApi {
     static async getById(id: number, token: string): Promise<TextSet> {
@@ -25,5 +26,8 @@ export class TextSetApi {
         return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
     }
 
-    static async getPastTexts(textSetId: number, token: string): Promise<Array<Text>>
+    static async getAllVisibleTexts(token: string, textSetId: number): Promise<Array<Text>> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}/texts/all/visible`;
+        return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
+    }
 }
