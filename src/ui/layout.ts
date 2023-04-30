@@ -8,7 +8,7 @@ export class Layout {
         return m("#app",
             m(Navbar),
             m(SideNav),
-            m("#app_container", node)
+            m("#app_container.animate-in", node)
         );
     }
 
