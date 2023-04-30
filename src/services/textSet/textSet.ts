@@ -5,5 +5,5 @@ export interface TextSet {
     title: string;
     description: string;
     ownerId: number;
-    texts: Array<Text>;
+    texts: Array<Text> | undefined;
 }
