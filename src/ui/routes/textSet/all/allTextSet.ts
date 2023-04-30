@@ -7,6 +7,7 @@ import {TextSetStore} from "../../../../store/textSet/textSetStore";
 import {subscribeStream} from "../../../subscribeStream";
 import {TextSet} from "../../../../services/textSet/textSet";
 import {NoData} from "../../../components/noData/noData";
+import {BaseComponent, BaseStreamComponent} from "../../../base/baseComponent";
 
 interface AllTextSet_WithDataAttrs {
     mine: TextSet[];
@@ -46,18 +47,18 @@ export function AllTextSet() {
         return (mine !== undefined && notMine !== undefined);
     }
 
-    return {
-        oninit: () => {
-            subscribeStream(TextSetStore.mine, TextSetStore.notMine);
-        },
+    return new class extends BaseStreamComponent {
+        override streams = [TextSetStore.mine, TextSetStore.notMine];
 
-        onbeforeupdate: () => {
-            mine = TextSetStore.mine();
+        override onbeforeupdate(): boolean | void {
             notMine = TextSetStore.notMine();
-        },
+            mine = TextSetStore.mine();
+        }
 
-        view: () => Layout.free(
-            validateData() ? m(AllTextSet_WithData, {mine: mine!!, notMine: notMine!!}) : m(NoData)
-        )
-    };
+        override view() {
+            return Layout.free(
+                validateData() ? m(AllTextSet_WithData, {mine: mine!!, notMine: notMine!!}) : m(NoData)
+            )
+        }
+    }
 }

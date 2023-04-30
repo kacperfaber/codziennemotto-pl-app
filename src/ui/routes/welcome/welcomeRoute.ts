@@ -1,4 +1,4 @@
-import Mithril, {RouteResolver} from "mithril";
+import Mithril, {RouteResolver, Vnode} from "mithril";
 import {Welcome} from "./welcome";
 import m from "mithril";
 import {RouteSecurity} from "../../../routes";
