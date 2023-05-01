@@ -3,6 +3,7 @@ import {withTokenAsync} from "../withToken";
 import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 import {Text} from "./text";
+import {Summary} from "./summary";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
@@ -73,5 +74,23 @@ export class TextSetService {
 
     static async fetchAllVisibleTexts(textSetId: number): Promise<Array<Text>> {
         return withTokenAsync(token => TextSetApi.getAllVisibleTexts(token, textSetId));
+    }
+
+    static async fetchSummary(): Promise<Summary> {
+        return withTokenAsync(async (token) => {
+            let summary = await TextSetApi.fetchSummary(token);
+            TextSetStore.summary(summary);
+            return summary
+        });
+    }
+
+    static async getSummary(forceRefresh = false): Promise<Summary> {
+        let summary = TextSetStore.summary();
+
+        if (summary === undefined || forceRefresh) {
+            return await this.fetchSummary();
+        }
+
+        return summary;
     }
 }

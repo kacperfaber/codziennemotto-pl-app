@@ -1,9 +1,11 @@
 import {TextSet} from "../../services/textSet/textSet";
 import stream from "mithril/stream";
+import {Summary} from "../../services/textSet/summary";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
     public notMine = stream<TextSet[] | undefined>(undefined);
+    public summary = stream<Summary | undefined>(undefined);
 
     async tryUpdateTextSet(textSetId: number, doUpdate: (t: TextSet) => void): Promise<TextSet | undefined> {
         const textSet = await this.getTextSet(textSetId);
