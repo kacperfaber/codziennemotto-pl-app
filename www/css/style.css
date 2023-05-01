@@ -142,7 +142,7 @@ body, html {
 }
 
 .text-set-list-item:hover{
-    background: #333;
+    background: #555;
 }
 
 #app_all_text_set__mine__header {
@@ -161,4 +161,24 @@ body, html {
 
 .no-data-icon {
     font-size: 10vh;
+}
+
+.text-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 30px;
+}
+
+.text-list-item:nth-child(even) {
+    background: #333;
+}
+
+.text-list-item:hover {
+    background: #555;
+}
+
+.text-list-item > .id {
+    color: gray;
 }

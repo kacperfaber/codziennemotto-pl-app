@@ -15,5 +15,7 @@ export class RouteSecurity {
 
 export const Links = {
     welcome: "/welcome",
-    home: "/home"
+    home: "/home",
+
+    textById: (id: number) => {throw new Error("Links -> textById not implemented")}
 }
