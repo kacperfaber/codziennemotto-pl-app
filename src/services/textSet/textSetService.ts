@@ -3,13 +3,21 @@ import {withTokenAsync} from "../withToken";
 import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 import {Text} from "./text";
-import {Summary} from "./summary";
+import {Summary, SummaryItem} from "./summary";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
         return withTokenAsync(
             token => TextSetApi.getById(id, token)
         );
+    }
+
+    static async getById(id: number): Promise<TextSet> {
+        const textSet = await TextSetStore.getTextSet(id);
+
+        if (textSet) return textSet;
+
+        return this.fetchById(id);
     }
 
     static async fetchMine(): Promise<Array<TextSet>> {
@@ -92,5 +100,9 @@ export class TextSetService {
         }
 
         return summary;
+    }
+
+    static async getSummaryItem(textSetId: number): Promise<SummaryItem | undefined> {
+        return this.getSummary().then(summary => summary.find(x => x.textSet.id === textSetId));
     }
 }
