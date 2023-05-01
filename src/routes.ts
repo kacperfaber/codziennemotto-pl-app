@@ -17,5 +17,7 @@ export const Links = {
     welcome: "/welcome",
     home: "/home",
 
-    textById: (id: number) => {throw new Error("Links -> textById not implemented")}
+    textById: (id: number) => {throw new Error("Links -> textById not implemented")},
+
+    textSetById: (id: number) => {throw new Error("Links -> textSetById not implemented")}
 }
