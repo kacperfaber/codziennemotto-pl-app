@@ -1,4 +1,4 @@
-import Mithril from "mithril";
+import Mithril, {Vnode} from "mithril";
 import {BaseStreamComponent} from "../../../base/baseComponent";
 import {Layout} from "../../../layout";
 import m from "mithril";
@@ -9,9 +9,25 @@ import {TextSet} from "../../../../services/textSet/textSet";
 import {Text} from "../../../../services/textSet/text";
 import {TextSetApi} from "../../../../api/textSet/textSetApi";
 import {Summary, SummaryItem} from "../../../../services/textSet/summary";
+import {
+    ExpandableTextList,
+    ExpandableTextListItem
+} from "../../../components/textSet/textList/expandable/expandableTextList";
+import {t} from "i18next";
+import route from "mithril/route";
+import {Links} from "../../../../routes";
+import {SingleTextSetDailyView} from "../../../components/textSet/textList/daily/singleTextSet/singleTextSetDailyView";
 
 export interface TextSetByIdAttrs {
     id: number;
+}
+
+export function TextSetById_Header(): Mithril.Component<any, any> {
+    return {
+        view:(vnode: Vnode<{title: string}>) => m("#app_text_set_by_id__header.col-12",
+            m("h3", vnode.attrs.title)
+        )
+    }
 }
 
 export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
@@ -35,11 +51,28 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
         }
 
         override view(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
+            if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
+                return m("div", "no data");
+            }
+
             return Layout.free(
                 m(".container",
                     m(".row",
-                        m(".col-12.offset-lg-1.col-lg-4",
+                        m(TextSetById_Header, {title: this.textSetStreamHook.value!!}),
 
+                        Layout.splitColumn(
+                            m(SingleTextSetDailyView, {
+                                text: this.summaryStreamHook.value!!.text,
+                                textSet: this.summaryStreamHook.value!!.textSet
+                            })
+                        ),
+
+                        Layout.splitColumn(
+                            m(ExpandableTextList, {
+                                title: t("all.texts"),
+                                showAllOnClick: () => route.set("TODO"), // TODO: Link?
+                                items: this.textsStreamHook.value!!.slice(0, 5)
+                            })
                         )
                     )
                 )

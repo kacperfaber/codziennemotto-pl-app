@@ -212,3 +212,37 @@ body, html {
     background: #222;
     padding: 25px;
 }
+
+.single-text-set-daily-view {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.single-text-set-daily-view-right > .from {
+    color: #999;
+    text-decoration: underline;
+}
+
+.single-text-set-daily-view-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-text-set-daily-view-right {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width:100%;
+}
+
+#app_text_set_by_id__header {
+    width: 100%;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
