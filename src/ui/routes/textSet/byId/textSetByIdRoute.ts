@@ -8,6 +8,6 @@ export const TextSetByIdRoute: RouteResolver<{id: number}> = {
     },
 
     render(vnode: Mithril.Vnode<{id: number}>): Mithril.Children {
-        return m(TextSetById, vnode.attrs.id)
+        return m(TextSetById, {id: vnode.attrs.id})
     }
 }

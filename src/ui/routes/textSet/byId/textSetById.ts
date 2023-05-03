@@ -52,7 +52,8 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
         override view(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
             if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
-                return m("div", "no data");
+                // TODO: Replace with loading...
+                return m("div", "no data for " + vnode.attrs.id);
             }
 
             return Layout.free(

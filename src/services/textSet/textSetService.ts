@@ -103,6 +103,6 @@ export class TextSetService {
     }
 
     static async getSummaryItem(textSetId: number): Promise<SummaryItem | undefined> {
-        return this.getSummary().then(summary => summary.find(x => x.textSet.id === textSetId));
+        return (await this.getSummary()).find(x => x.textSet.id == textSetId);
     }
 }

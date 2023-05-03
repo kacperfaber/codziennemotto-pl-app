@@ -33,7 +33,7 @@ export class TextSetApi {
     }
 
     static async fetchSummary(token: string): Promise<Summary> {
-        const url = `${Config.apiUrl}/summary`;
+        const url = `${Config.apiUrl}/text-set/summary`;
         return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
     }
 }
