@@ -7,25 +7,28 @@ import stream from "mithril/stream";
 import Stream from "mithril/stream";
 import {TextSet} from "../../../../services/textSet/textSet";
 import {Text} from "../../../../services/textSet/text";
-import {TextSetApi} from "../../../../api/textSet/textSetApi";
-import {Summary, SummaryItem} from "../../../../services/textSet/summary";
+import {SummaryItem} from "../../../../services/textSet/summary";
 import {
-    ExpandableTextList,
-    ExpandableTextListItem
+    ExpandableTextList
 } from "../../../components/textSet/textList/expandable/expandableTextList";
 import {t} from "i18next";
 import route from "mithril/route";
-import {Links} from "../../../../routes";
 import {SingleTextSetDailyView} from "../../../components/textSet/textList/daily/singleTextSet/singleTextSetDailyView";
 
 export interface TextSetByIdAttrs {
     id: number;
 }
 
-export function TextSetById_Header(): Mithril.Component<any, any> {
+export interface TextSetById_HeaderAttrs {
+    title: string,
+    description: string
+}
+
+export function TextSetById_Header(): Mithril.Component<TextSetById_HeaderAttrs, any> {
     return {
-        view:(vnode: Vnode<{title: string}>) => m("#app_text_set_by_id__header.col-12",
-            m("h3", vnode.attrs.title)
+        view: (vnode: Vnode<TextSetById_HeaderAttrs>) => m("#app_text_set_by_id__header.col-12.col-lg-4.offset-lg-1",
+            m("h3", vnode.attrs.title),
+            m("p", vnode.attrs.description)
         )
     }
 }
@@ -59,13 +62,16 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
             return Layout.free(
                 m(".container",
                     m(".row",
-                        m(TextSetById_Header, {title: this.textSetStreamHook.value!!}),
+                        m(TextSetById_Header, {
+                            title: this.textSetStreamHook.value!!.title,
+                            description: this.textSetStreamHook.value!!.description
+                        }),
 
                         Layout.splitColumn(
-                            m(SingleTextSetDailyView, {
+                            m(".margin-bottom-50", m(SingleTextSetDailyView, {
                                 text: this.summaryStreamHook.value!!.text,
                                 textSet: this.summaryStreamHook.value!!.textSet
-                            })
+                            }))
                         ),
 
                         Layout.splitColumn(

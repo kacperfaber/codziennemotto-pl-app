@@ -242,7 +242,14 @@ body, html {
 
 #app_text_set_by_id__header {
     width: 100%;
-    text-align: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    flex-direction: column;
+}
+
+.margin-bottom-50 {
+    margin-bottom: 50px;
 }
