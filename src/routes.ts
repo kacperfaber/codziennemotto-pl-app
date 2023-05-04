@@ -1,5 +1,4 @@
 import {AuthenticationService} from "./services/auth/authenticationService";
-import route from "mithril/route";
 
 export const Links = {
     welcome: "/welcome",
