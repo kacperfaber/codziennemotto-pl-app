@@ -1,4 +1,4 @@
-import m from "mithril";
+import m, {Component} from "mithril";
 import Mithril, {Vnode} from "mithril";
 import {Layout} from "../../../layout";
 import {TextSetList} from "../../../components/textSet/list/TextSetList";
@@ -8,13 +8,14 @@ import {subscribeStream} from "../../../subscribeStream";
 import {TextSet} from "../../../../services/textSet/textSet";
 import {NoData} from "../../../components/noData/noData";
 import {BaseComponent, BaseStreamComponent} from "../../../base/baseComponent";
+import {TextSetService} from "../../../../services/textSet/textSetService";
 
 interface AllTextSet_WithDataAttrs {
     mine: TextSet[];
     notMine: TextSet[];
 }
 
-function AllTextSet_WithData(): Mithril.Component<AllTextSet_WithDataAttrs> {
+function AllTextSet_WithData(): Component<AllTextSet_WithDataAttrs> {
     return {
         view: (vnode: Vnode<AllTextSet_WithDataAttrs>) =>
             m(".container",
@@ -45,12 +46,22 @@ export function AllTextSet() {
     }
 
     return new class extends BaseStreamComponent<any, any> {
-        mine = this.useStream(TextSetStore.mine);
-        notMine = this.useStream(TextSetStore.notMine);
+        mine = this.useStream<TextSet[] | undefined>(TextSetStore.mine);
+        notMine = this.useStream<TextSet[] | undefined>(TextSetStore.notMine);
+
+        override oninit(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): any {
+            TextSetService.getMine().then(data => this.mine.stream(data));
+            TextSetService.getNotMine().then(data => this.notMine.stream(data));
+
+            return super.oninit(vnode);
+        }
 
         override view() {
             return Layout.free(
-                validateData(this.mine.value, this.notMine.value) ? m(AllTextSet_WithData, {mine: this.mine.value!!, notMine: this.notMine.value!!}) : m(NoData)
+                validateData(this.mine.value, this.notMine.value) ? m(AllTextSet_WithData, {
+                    mine: this.mine.value!!,
+                    notMine: this.notMine.value!!
+                }) : m(NoData) /* TODO: Replace with loading. */
             )
         }
     }
