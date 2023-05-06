@@ -88,6 +88,22 @@ body, html {
     display: none;
 }
 
+#app_login__form__submit > .content {
+    display: block;
+}
+
+#app_login__form__submit > .content.disabled {
+    display: none;
+}
+
+#app_login__form__submit > .spinner {
+    display: none;
+}
+
+#app_login__form__submit > .spinner.active {
+    display: block;
+}
+
 #app_sidenav {
     /* Because #app_sidenav__close_button is absolute... */
     padding-top: 10vh;
