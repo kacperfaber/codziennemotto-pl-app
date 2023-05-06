@@ -75,6 +75,15 @@ body, html {
     flex-direction: column;
 }
 
+#app_login__form {
+    padding: 25px;
+}
+
+#app_login__form__input_login,#app_login__form__input_password {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #app_login__login_error.disabled {
     display: none;
 }
