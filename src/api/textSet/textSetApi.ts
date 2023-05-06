@@ -36,4 +36,9 @@ export class TextSetApi {
         const url = `${Config.apiUrl}/text-set/summary`;
         return await httpRequest({method: 'GET', headers: {'Authorization': token}, url: url});
     }
+
+    static async deleteText(token: string, textSetId: number, textId: number): Promise<void> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}/${textId}`;
+        return await httpRequest({method: 'DELETE', headers: {'Authorization': token}, url: url});
+    }
 }

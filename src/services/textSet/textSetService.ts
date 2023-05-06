@@ -105,4 +105,13 @@ export class TextSetService {
     static async getSummaryItem(textSetId: number): Promise<SummaryItem | undefined> {
         return (await this.getSummary()).find(x => x.textSet.id == textSetId);
     }
+
+    static async deleteText(textSetId: number, textId: number): Promise<void> {
+        return withTokenAsync(
+            token => {
+                // TODO: I should delete this TextSet from database, if it's done [or not].
+                return TextSetApi.deleteText(token, textSetId, textId);
+            }
+        );
+    }
 }
