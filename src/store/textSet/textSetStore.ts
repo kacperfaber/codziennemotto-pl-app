@@ -1,6 +1,7 @@
 import {TextSet} from "../../services/textSet/textSet";
 import stream from "mithril/stream";
 import {Summary} from "../../services/textSet/summary";
+import {TextSetApi} from "../../api/textSet/textSetApi";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
@@ -9,7 +10,7 @@ class _TextSetStore {
 
     async tryUpdateTextSet(textSetId: number, doUpdate: (t: TextSet) => void): Promise<TextSet | undefined> {
         const textSet = await this.getTextSet(textSetId);
-        if(textSet != undefined) doUpdate(textSet);
+        if (textSet != undefined) doUpdate(textSet);
         return textSet;
     }
 
@@ -31,6 +32,17 @@ class _TextSetStore {
         const textSetFromNotMine = await this.getTextSetFromNotMine(textSetId);
         if (textSetFromMine != undefined) return textSetFromMine;
         return textSetFromNotMine;
+    }
+
+    async resetTextsInTextSetById(textSetId: number): Promise<TextSet> {
+        const clearTextSets = (textSet: TextSet) => {
+            textSet.texts = undefined;
+        }
+
+        return new Promise<TextSet>(async (resolve, reject) => {
+            const result = await this.tryUpdateTextSet(textSetId, clearTextSets);
+            return result ? resolve(result) : reject();
+        });
     }
 }
 

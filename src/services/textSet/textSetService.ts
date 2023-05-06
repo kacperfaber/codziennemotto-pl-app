@@ -108,8 +108,8 @@ export class TextSetService {
 
     static async deleteText(textSetId: number, textId: number): Promise<void> {
         return withTokenAsync(
-            token => {
-                // TODO: I should delete this TextSet from database, if it's done [or not].
+            async (token) => {
+                await TextSetStore.resetTextsInTextSetById(textSetId);
                 return TextSetApi.deleteText(token, textSetId, textId);
             }
         );
