@@ -21,12 +21,32 @@ export const Login = function () {
 
     function onSuccess() {
         setSubmitButtonContent();
+        activateSuccessMessage();
+        disableFailedMessage();
     }
 
     function onFailed() {
-        document.getElementById("app_login__login_error")!!.classList.remove("disabled");
+        activateFailedMessage();
         setSubmitButtonContent();
         enableSubmit();
+        activateFailedMessage();
+        disableSuccessMessage();
+    }
+
+    function activateFailedMessage() {
+        document.getElementById("app_login__login_error")!!.classList.remove("disabled");
+    }
+
+    function disableFailedMessage() {
+        document.getElementById("app_login__login_error")!!.classList.add("disabled");
+    }
+
+    function activateSuccessMessage() {
+        document.getElementById("app_login__login_success")!!.classList.remove("disabled");
+    }
+
+    function disableSuccessMessage() {
+        document.getElementById("app_login__login_success")!!.classList.add("disabled");
     }
 
     function getSubmitButtonSpinner(): HTMLElement | null {
@@ -102,7 +122,8 @@ export const Login = function () {
 
                             m(".form-group.mb-3",
 
-                                m("label#app_login__login_error.disabled", {style: {color: 'red'}}, t("login.login_error"))
+                                m("label#app_login__login_error.disabled", {style: {color: 'red'}}, t("login.login_error")),
+                                m("label#app_login__login_success.disabled", {style: {color: 'green'}}, t("login.login_success"))
                             ),
 
                             m("button#app_login__form__submit.btn.btn-primary", {type: 'submit'},

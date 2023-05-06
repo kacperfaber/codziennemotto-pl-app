@@ -88,6 +88,10 @@ body, html {
     display: none;
 }
 
+#app_login__login_success.disabled {
+    display: none;
+}
+
 #app_login__form__submit > .content {
     display: block;
 }
