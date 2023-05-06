@@ -1,7 +1,6 @@
 import {TextSet} from "../../services/textSet/textSet";
 import stream from "mithril/stream";
 import {Summary} from "../../services/textSet/summary";
-import {TextSetApi} from "../../api/textSet/textSetApi";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
@@ -43,6 +42,11 @@ class _TextSetStore {
             const result = await this.tryUpdateTextSet(textSetId, clearTextSets);
             return result ? resolve(result) : reject();
         });
+    }
+
+    async resetTextSets(): Promise<void> {
+        this.mine(undefined);
+        this.notMine(undefined);
     }
 }
 

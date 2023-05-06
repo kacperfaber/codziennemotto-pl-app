@@ -114,4 +114,13 @@ export class TextSetService {
             }
         );
     }
+
+    static async createNewTextSet(title: string, description: string): Promise<void> {
+        return withTokenAsync(
+            async(token) => {
+                await TextSetStore.resetTextSets();
+                return TextSetApi.createTextSet(token, title, description);
+            }
+        )
+    }
 }
