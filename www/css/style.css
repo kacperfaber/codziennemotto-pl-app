@@ -322,3 +322,25 @@ body, html {
     margin-top: 15px;
     margin-bottom:30px;
 }
+
+#app_sidenav__current__presentation__logout {
+    background: #560056;
+}
+
+#app_sidenav__current__presentation {
+    border-radius: 25px;
+    background: linear-gradient(45deg, purple, #ff08ff);
+    padding: 30px;
+    margin: 25px;
+}
+
+#app_sidenav__current__presentation > .email {
+    color: gray;
+}
+
+#app_sidenav__current__none {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,6 +1,8 @@
-import m from "mithril";
+import m, {redraw} from "mithril";
 import {SideNavCtrl} from "./sideNavCtrl";
 import {SideNavLinks} from "./sideNavLinks";
+import {UserStore} from "../../../store/user/userStore";
+import {SideNavCurrentUser} from "./current/currentUser";
 
 function SideNavCloseButton() {
     return {
@@ -14,9 +16,14 @@ function SideNavCloseButton() {
 
 export const SideNav = function () {
     return {
+        oninit: () => {
+            UserStore.current.map(() => redraw());
+        },
+
         view: () => m("#app_sidenav",
             m(SideNavCloseButton),
-            m(SideNavLinks)
+            m(SideNavLinks),
+            m(SideNavCurrentUser)
         )
     };
 }
