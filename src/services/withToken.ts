@@ -11,7 +11,7 @@ export async function withTokenAsync<T>(success: (token: string) => T): Promise<
         (resolve, reject) => {
             const token = StorageService.getCurrentToken();
             if (!token) {
-                reject();
+                reject(new Error("No token defined. Promise rejected."));
                 return;
             }
             const res = success(token);
