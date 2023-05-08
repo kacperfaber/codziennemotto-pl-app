@@ -12,7 +12,7 @@ export const Welcome = function () {
                 m("#app_welcome",
                     m("h5", t("welcome.header")),
                     m("p", t("welcome.description")),
-                    m("button.btn.btn-success", {onclick: () => AppNavigator.home()}, t("all.sign_in"))
+                    m("button.btn.btn-success", {onclick: () => AppNavigator.login()}, t("all.sign_in"))
                 )
             )
         }

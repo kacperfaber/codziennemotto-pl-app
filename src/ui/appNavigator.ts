@@ -21,4 +21,8 @@ export class AppNavigator {
     public static welcome() {
         route.set(Links.welcome);
     }
+
+    public static login() {
+        route.set(Links.login);
+    }
 }
