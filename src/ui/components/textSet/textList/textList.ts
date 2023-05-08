@@ -3,12 +3,12 @@ import {Text} from "../../../../services/textSet/text";
 import m from "mithril";
 import {t} from "i18next";
 import route from "mithril/route";
-import {Links} from "../../../../routes";
+import {AppNavigator} from "../../../appNavigator";
 
 export function TextListItem() {
     return {
         view: (vnode: Vnode<{text: Text}>) => m("button.btn.text-list-item",
-            {onclick: () => route.set(Links.textById(vnode.attrs.text.id))},
+            {onclick: () => AppNavigator.textById(vnode.attrs.text.id)},
             m("h5.text", vnode.attrs.text.text),
             m("p.id", `${t("all.id")}: ${vnode.attrs.text.id}`)
         )

@@ -1,13 +1,13 @@
 import m, {Vnode} from "mithril";
 import {Text} from "../../../../../services/textSet/text";
 import route from "mithril/route";
-import {Links} from "../../../../../routes";
 import {t} from "i18next";
+import {AppNavigator} from "../../../../appNavigator";
 
 export function ExpandableTextListItem() {
     return {
         view: (vnode: Vnode<{ item: Text }>) => m("button.btn.expandable-text-list-item",
-            {onclick: () => route.set(Links.textById(vnode.attrs.item.id))},
+            {onclick: () => AppNavigator.textSetById(vnode.attrs.item.id)},
             m("p.text", vnode.attrs.item.text),
             m("p.id", `${t("all.id")}: ${vnode.attrs.item.id}`)
         )

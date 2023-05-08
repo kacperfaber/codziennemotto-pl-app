@@ -1,7 +1,7 @@
 import m, {Vnode} from "mithril";
-import {Links} from "../../../routes";
 import {t} from "i18next";
 import route from "mithril/route";
+import {Links} from "../../links";
 
 type Link = { route: string, text: string };
 

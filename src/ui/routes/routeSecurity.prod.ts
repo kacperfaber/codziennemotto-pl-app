@@ -1,14 +1,14 @@
 import route from "mithril/route";
 import {AuthenticationService} from "../../services/auth/authenticationService";
-import {Links} from "../../routes";
+import {AppNavigator} from "../appNavigator";
 
 class RouteSecurityProd {
     static async authenticatedOrWelcome(requestedPath: string) {
-        if (!await AuthenticationService.current()) route.set(Links.welcome);
+        if (!await AuthenticationService.current()) AppNavigator.welcome();
     }
 
     static async anonymousOrHome(requestedPath: string) {
-        if (await AuthenticationService.current()) route.set(Links.home);
+        if (await AuthenticationService.current()) AppNavigator.home();
     }
 }
 

@@ -14,6 +14,7 @@ import {
 import {t} from "i18next";
 import route from "mithril/route";
 import {SingleTextSetDailyView} from "../../../components/textSet/textList/daily/singleTextSet/singleTextSetDailyView";
+import {AppNavigator} from "../../../appNavigator";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -53,7 +54,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
             return super.oninit(vnode);
         }
 
-        override view(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
+        override view(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
             if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
                 // TODO: Replace with loading...
                 return m("div", "no data for " + vnode.attrs.id);
@@ -77,7 +78,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                         Layout.splitColumn(
                             m(ExpandableTextList, {
                                 title: t("all.texts"),
-                                showAllOnClick: () => route.set("TODO"), // TODO: Link?
+                                showAllOnClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id),
                                 items: this.textsStreamHook.value!!.slice(0, 5)
                             })
                         )
