@@ -286,3 +286,29 @@ body, html {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.text-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted dimgrey;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.text-item:hover {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted dimgrey;
+    margin-right: 15px;
+    margin-left: 15px;
+    background: #222;
+}
+
+.text-item > .id {
+    color: gray;
+}
