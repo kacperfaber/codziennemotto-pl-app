@@ -6,5 +6,7 @@ export const Links = {
 
     textById: (id: number) => {throw new Error("Links -> textById not implemented")},
 
-    textSetById: (id: number) => {throw new Error("Links -> textSetById not implemented")}
+    textSetById: (id: number) => {throw new Error("Links -> textSetById not implemented")},
+
+    allTexts: (id: number) => {throw new Error('Links -> allTexts not implemented')}
 }
