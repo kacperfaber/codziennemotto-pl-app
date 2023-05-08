@@ -112,12 +112,12 @@ export const Login = function () {
 
                             m(".form-floating#app_login__form__input_login",
                                 m("input#inputLogin[type=text].form-control", {onchange: onLoginChange,'placeholder': t("login.login_placeholder")}),
-                                m("label", {'for': t("inputLogin")}, t("login.login_label"))
+                                m("label", {'for': "inputLogin"}, t("login.login_label"))
                             ),
 
                             m(".form-floating#app_login__form__input_password",
                                 m("input#inputPassword[type=password].form-control", {onchange: onPasswordChange, 'placeholder': t("login.password_placeholder")}),
-                                m("label", {'for': 'inputPassword'}, t("login.login_password"))
+                                m("label", {'for': 'inputPassword'}, t("login.password_label"))
                             ),
 
                             m(".form-group.mb-3",

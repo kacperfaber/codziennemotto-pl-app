@@ -42,7 +42,7 @@ export class TextSetApi {
         return await httpRequest({method: 'DELETE', headers: {'Authorization': token}, url: url});
     }
 
-    static async createTextSet(token: string, title: string, description: string): Promise<void> {
+    static async createTextSet(token: string, title: string, description: string): Promise<TextSet> {
         const url = `${Config.apiUrl}/text-set/create-new`;
         const body = {title, description};
         return await httpRequest({method: 'POST', headers: {'Authorization': token}, url: url, body: body})

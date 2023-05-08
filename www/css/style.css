@@ -270,7 +270,6 @@ body, html {
 }
 
 #app_text_set_by_id__header {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -281,4 +280,9 @@ body, html {
 
 .margin-bottom-50 {
     margin-bottom: 50px;
+}
+
+#app_create_new_text_set__form__title, #app_create_new_text_set__form__description {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

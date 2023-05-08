@@ -4,6 +4,6 @@ export interface TextSet {
     id: number;
     title: string;
     description: string;
-    ownerId: number;
+    ownerId: number | null;
     texts: Array<Text> | undefined;
 }
