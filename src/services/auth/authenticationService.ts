@@ -2,6 +2,7 @@ import {AuthenticationApi} from "../../api/auth/authenticationApi";
 import {StorageService} from "../storage/storageService";
 import {User} from "../user/user";
 import {withToken} from "../withToken";
+import {UserStore} from "../../store/user/userStore";
 
 export interface AuthResult {
     id: number;
@@ -17,6 +18,7 @@ export class AuthenticationService {
         if (!result) return false;
 
         StorageService.setCurrentAuth(result);
+        UserStore.current(result satisfies User);
 
         return true;
     }
