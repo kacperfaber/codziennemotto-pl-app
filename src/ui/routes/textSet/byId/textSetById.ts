@@ -26,7 +26,7 @@ export interface TextSetById_HeaderAttrs {
 
 export function TextSetById_Header(): Mithril.Component<TextSetById_HeaderAttrs, any> {
     return {
-        view: (vnode: Vnode<TextSetById_HeaderAttrs>) => m("#app_text_set_by_id__header.col-12.col-lg-4.offset-lg-1",
+        view: (vnode: Vnode<TextSetById_HeaderAttrs>) => m("#app_text_set_by_id__header.col-12.col-lg-4.offset-lg-4",
             m("h3", vnode.attrs.title),
             m("p", vnode.attrs.description)
         )
