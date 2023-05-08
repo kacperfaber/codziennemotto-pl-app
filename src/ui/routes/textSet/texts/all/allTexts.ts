@@ -6,10 +6,14 @@ import {Layout} from "../../../../layout";
 import m from "mithril";
 import {TextSet} from "../../../../../services/textSet/textSet";
 import {TextsList} from "../../../../components/textSet/texts/list/textsList";
+import {NoData} from "../../../../components/noData/noData";
 
 export function AllTexts_SetTitle() {
     return {
-        view: (vnode: Vnode<{ title: string, description: string }>) => m("h5", vnode.attrs.title)
+        view: (vnode: Vnode<{
+            title: string,
+            description: string
+        }>) => m("div.all-texts-text-set-header", m("h5.title", vnode.attrs.title), m("p.description", vnode.attrs.description))
     }
 }
 
@@ -41,19 +45,20 @@ export function AllTexts() {
 
         override view() {
             return Layout.free(
-                (visibleTexts !== undefined && textSet !== undefined) ?
-
                 m("#app_text_set_all_texts",
-                    m("#app_text_set_all_texts__header",
-                        m(AllTexts_SetTitle, {title: textSet!!.title, description: textSet!!.description})
-                    ),
+                    Layout.center(
+                        (visibleTexts !== undefined && textSet !== undefined) ?
+                            m("div",
+                                m("#app_text_set_all_texts__header",
+                                    m(AllTexts_SetTitle, {title: textSet!!.title, description: textSet!!.description})
+                                ),
 
-                    m("#app_text_set_all_texts__text_list",
-                        m(TextsList, {items: visibleTexts!!})
+                                m("#app_text_set_all_texts__text_list",
+                                    m(TextsList, {items: visibleTexts!!})
+                                )
+                            ) : m(NoData)
                     )
                 )
-
-                    : m("div", "brak danych")
             )
         }
     }

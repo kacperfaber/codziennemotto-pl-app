@@ -312,3 +312,13 @@ body, html {
 .text-item > .id {
     color: gray;
 }
+
+.all-texts-text-set-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom:30px;
+}
