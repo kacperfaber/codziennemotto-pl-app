@@ -22,6 +22,16 @@ export class Layout {
         )
     }
 
+    static centerNodes(...nodes: Array<Vnode<any, any>>) {
+        return m(".container",
+            m(".row",
+                m(".col-12.col-lg-6.offset-lg-3",
+                    ...nodes
+                )
+            )
+        )
+    }
+
     static splitColumn(node: Vnode<any, any>): Vnode<any, any> {
         return m(".col-12.col-lg-4.offset-lg-1", node);
     }

@@ -3,6 +3,7 @@ import {SideNavCtrl} from "./sideNavCtrl";
 import {SideNavLinks} from "./sideNavLinks";
 import {UserStore} from "../../../store/user/userStore";
 import {SideNavCurrentUser} from "./current/currentUser";
+import {Layout} from "../../layout";
 
 function SideNavCloseButton() {
     return {
@@ -22,8 +23,10 @@ export const SideNav = function () {
 
         view: () => m("#app_sidenav",
             m(SideNavCloseButton),
-            m(SideNavLinks),
-            m(SideNavCurrentUser)
+            Layout.centerNodes(
+                m(SideNavLinks),
+                m(SideNavCurrentUser)
+            )
         )
     };
 }
