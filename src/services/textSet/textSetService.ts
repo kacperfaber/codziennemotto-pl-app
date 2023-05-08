@@ -71,9 +71,7 @@ export class TextSetService {
             if (forceRefresh) throw new Error("Can't refresh TextSet with texts, if TextSet doesn't exist in store.")
 
             return await fetchTexts(textSetId);
-        }
-
-        else {
+        } else {
             if (textSet.texts && !forceRefresh) return textSet.texts;
             textSet.texts = await fetchTexts(textSetId);
             return textSet.texts;
@@ -115,9 +113,9 @@ export class TextSetService {
         );
     }
 
-    static async createNewTextSet(title: string, description: string): Promise<void> {
+    static async createNewTextSet(title: string, description: string): Promise<TextSet> {
         return withTokenAsync(
-            async(token) => {
+            async (token) => {
                 await TextSetStore.resetTextSets();
                 return TextSetApi.createTextSet(token, title, description);
             }
