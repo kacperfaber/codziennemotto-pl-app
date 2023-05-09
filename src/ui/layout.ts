@@ -35,4 +35,12 @@ export class Layout {
     static splitColumn(node: Vnode<any, any>): Vnode<any, any> {
         return m(".col-12.col-lg-4.offset-lg-1", node);
     }
+
+    static withHeader(text: string, paragraph: string | undefined = undefined, node: Vnode<any, any>): Vnode<any, any> {
+        return m(".with-header",
+            m("h3.header", text),
+            paragraph ? m("p.paragraph", paragraph) : m(".d-none"),
+            node
+        );
+    }
 }

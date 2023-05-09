@@ -350,7 +350,6 @@ body, html {
 }
 
 .text-set-preview {
-    margin-top: 60px;
     background: #222;
     padding: 15px;
     transition: border-left 0.2s ease-in-out, background-color 0.2s ease-in-out;
@@ -360,4 +359,13 @@ body, html {
 .text-set-preview:hover {
     border-left: 3px solid darkcyan;
     background: #333;
+}
+
+.with-header > .paragraph{
+    color: gray;
+}
+
+.with-header {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
