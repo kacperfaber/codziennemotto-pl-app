@@ -5,6 +5,7 @@ import {AllTextsRoute} from "./routes/textSet/texts/all/allTextsRoute";
 import {CreateNewTextSetRoute} from "./routes/textSet/createNew/createNewTextSetRoute";
 import {TextSetByIdRoute} from "./routes/textSet/byId/textSetByIdRoute";
 import {Links} from "./links";
+import {AddTextRoute} from "./routes/textSet/addNew/addTextRoute";
 
 export const Routes ={
     [Links.welcome]: WelcomeRoute,
@@ -19,5 +20,6 @@ export const Routes ={
     [Links.allTextSets]: AllTextSetRoute,
 
     /* texts */
-    [Links.allTextsLink]: AllTextsRoute
+    [Links.allTextsLink]: AllTextsRoute,
+    [Links.allTextsLink]: AddTextRoute
 }

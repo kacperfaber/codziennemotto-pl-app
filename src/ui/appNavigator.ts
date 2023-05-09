@@ -25,4 +25,8 @@ export class AppNavigator {
     public static login() {
         route.set(Links.login);
     }
+
+    public static addText(textSetId: number) {
+        route.set(`/text-set/${textSetId}/add`);
+    }
 }
