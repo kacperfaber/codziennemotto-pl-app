@@ -52,4 +52,9 @@ export class TextSetApi {
         const url = `${Config.apiUrl}/text-set/${textSetId}/add`;
         return await httpRequest({method: 'PUT', url, body: data, headers: {'Authorization': token}});
     }
+
+    static async deleteTextSet(token: string, textSetId: number): Promise<void> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}`
+        return await httpRequest({method: 'DELETE', url, headers: {'Authorization': token}});
+    }
 }

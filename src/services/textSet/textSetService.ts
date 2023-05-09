@@ -128,4 +128,11 @@ export class TextSetService {
             return await TextSetApi.createText(token, textSetId, {text: text, date: date, order: order});
         })
     }
+
+    static async deleteTextSet(textSetId: number) {
+        return withTokenAsync(async (token) => {
+            await TextSetStore.resetTextSets();
+            return await TextSetApi.deleteTextSet(token, textSetId);
+        })
+    }
 }
