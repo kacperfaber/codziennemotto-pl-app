@@ -56,7 +56,7 @@ export function AddText(vnode: Vnode<AddTextAttrs>): Mithril.Component<AddTextAt
                             undefined,
 
                             m("form#app_add_text__form", {onsubmit: onSubmit},
-                                m(".form-floating",
+                                m(".form-floating.my-3",
                                     m("input.form-control#app_add_text__form__input_text[type=text]", {
                                         onchange: onTextChanged,
                                         placeholder: t("text-set.add-text.input_text.placeholder")

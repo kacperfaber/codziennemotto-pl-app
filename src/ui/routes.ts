@@ -21,5 +21,5 @@ export const Routes ={
 
     /* texts */
     [Links.allTextsLink]: AllTextsRoute,
-    [Links.allTextsLink]: AddTextRoute
+    [Links.addTextToTextSet]: AddTextRoute
 }
