@@ -124,7 +124,7 @@ export class TextSetService {
 
     static async createText(textSetId: number, text: string, date: string | null, order: number): Promise<Text> {
         return withTokenAsync(async (token) => {
-            // TODO: When not found, it rejects a whole request. // await TextSetStore.resetTextsInTextSetById(textSetId);
+            await TextSetStore.resetTextsInTextSetById(textSetId);
             return await TextSetApi.createText(token, textSetId, {text: text, date: date, order: order});
         })
     }

@@ -33,14 +33,14 @@ class _TextSetStore {
         return textSetFromNotMine;
     }
 
-    async resetTextsInTextSetById(textSetId: number): Promise<TextSet> {
+    async resetTextsInTextSetById(textSetId: number): Promise<TextSet | undefined> {
         const clearTextSets = (textSet: TextSet) => {
             textSet.texts = undefined;
         }
 
-        return new Promise<TextSet>(async (resolve, reject) => {
-            const result = await this.tryUpdateTextSet(textSetId, clearTextSets);
-            return result ? resolve(result) : reject();
+        return new Promise<TextSet|undefined>(async (resolve) => {
+            const textSet = await this.tryUpdateTextSet(textSetId, clearTextSets);
+            return resolve(textSet);
         });
     }
 
