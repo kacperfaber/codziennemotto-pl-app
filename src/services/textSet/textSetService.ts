@@ -121,4 +121,11 @@ export class TextSetService {
             }
         )
     }
+
+    static async createText(textSetId: number, text: string, date: string | null, order: number): Promise<Text> {
+        return withTokenAsync(async (token) => {
+            await TextSetStore.resetTextsInTextSetById(textSetId);
+            return await TextSetApi.createText(token, textSetId, {text, date, order});
+        })
+    }
 }

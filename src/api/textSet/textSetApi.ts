@@ -47,4 +47,9 @@ export class TextSetApi {
         const body = {title, description};
         return await httpRequest({method: 'POST', headers: {'Authorization': token}, url: url, body: body})
     }
+
+    static async createText(token: string, textSetId: number, data: {text: string, date: string | null, order: number}): Promise<Text> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}/add`;
+        return await httpRequest({method: 'PUT', url, body: data, headers: {'Authorization': token}});
+    }
 }
