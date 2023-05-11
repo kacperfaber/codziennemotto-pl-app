@@ -1,6 +1,7 @@
 import {TextSet} from "../../services/textSet/textSet";
 import stream from "mithril/stream";
 import {Summary} from "../../services/textSet/summary";
+import {JoinLink} from "../../services/joinLink/joinLink";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
@@ -47,6 +48,19 @@ class _TextSetStore {
     async resetTextSets(): Promise<void> {
         this.mine(undefined);
         this.notMine(undefined);
+    }
+
+    async tryResetJoinLinks(textSetId: number): Promise<void> {
+        await this.tryUpdateTextSet(textSetId, t => t.joinLinks = undefined);
+    }
+
+    async getJoinLinks(textSetId: number): Promise<Array<JoinLink> | undefined> {
+        const textSet = await this.getTextSet(textSetId);
+        return textSet?.joinLinks;
+    }
+
+    async setJoinLinks(textSetId: number, joinLinks: Array<JoinLink> | undefined) {
+        await this.tryUpdateTextSet(textSetId, t => t.joinLinks = joinLinks);
     }
 }
 
