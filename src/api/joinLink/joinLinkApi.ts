@@ -7,4 +7,9 @@ export class JoinLinkApi {
         const url = `${Config.apiUrl}/text-set/${textSetId}/create-join-link`;
         return await httpRequest({headers: {'Authorization': token}, url, method: 'POST'});
     }
+
+    public static async fetchJoinLinks(token: string, textSetId: number): Promise<Array<JoinLink>> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}/join-links`;
+        return await httpRequest({headers: {'Authorization': token}, url, method: 'GET'});
+    }
 }

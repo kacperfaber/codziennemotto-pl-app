@@ -8,4 +8,18 @@ export class JoinLinkService {
         await TextSetStore.tryResetJoinLinks(textSetId);
         return await withTokenAsync(async (token: string) => await JoinLinkApi.createJoinLink(token, textSetId));
     }
+
+    public static async getJoinLinks(textSetId: number, forceRefresh = false): Promise<Array<JoinLink>> {
+        const store = await TextSetStore.getJoinLinks(textSetId);
+        return !store || forceRefresh ? JoinLinkService.fetchJoinLinks(textSetId) : store;
+    }
+
+    public static async fetchJoinLinks(textSetId: number): Promise<Array<JoinLink>> {
+        return await withTokenAsync(async (token) => {
+            await TextSetStore.tryResetJoinLinks(textSetId);
+            const joinLinks = await JoinLinkApi.fetchJoinLinks(token, textSetId);
+            await TextSetStore.setJoinLinks(textSetId, joinLinks);
+            return joinLinks;
+        })
+    }
 }
