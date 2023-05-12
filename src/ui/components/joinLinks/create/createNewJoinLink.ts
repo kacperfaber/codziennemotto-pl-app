@@ -2,6 +2,41 @@ import Mithril, {redraw, Vnode} from "mithril";
 import m from "mithril";
 import {JoinLink} from "../../../../services/joinLink/joinLink";
 import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
+import {t} from "i18next";
+
+interface CreateNewJoinLink_CreateAttrs {
+    createJoinLink: () => void
+}
+
+function CreateNewJoinLink_Create(): Mithril.Component<CreateNewJoinLink_CreateAttrs> {
+    return {
+        view: (vnode: Vnode<CreateNewJoinLink_CreateAttrs>) => m(".create-join-link__create",
+            m("button.btn.btn-primary", {onclick: vnode.attrs.createJoinLink}, t("join-links.create-new"))
+        )
+    }
+}
+
+interface CreateNewJoinLink_GeneratedAttrs {
+    joinLink: JoinLink;
+    reset: () => void;
+    copy: () => void;
+}
+
+function CreateNewJoinLink_Generated(): Mithril.Component<CreateNewJoinLink_GeneratedAttrs> {
+    return {
+        view: ({attrs}: Vnode<CreateNewJoinLink_GeneratedAttrs>) => m(".create-new-join-link__generated",
+            m(".create-new-join-link__generated__input.form-control", {'disabled': true},
+                m("h3.create-new-join-link__generated__input__text",
+                    attrs.joinLink.code,
+                    m("button.btn.create-new-join-link__generated__copy", {onclick: attrs.copy},
+                        m("span.icon.icon-paste")
+                    )
+                ),
+                m("button.btn.create-new-join-link__generated__reset", {onclick: attrs.reset}, m("span.icon.icon-cancel"))
+            )
+        )
+    }
+}
 
 export interface CreateNewJoinLinkAttrs {
     textSetId: number;
@@ -17,6 +52,7 @@ export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril
 
     const onFailed = () => {
         // TODO: Show error
+        throw new Error("createNewJoinLink.ts->onFailed not implemented.");
     };
 
     const createJoinLink = () => {
@@ -32,21 +68,12 @@ export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril
 
     const copy = () => {
         // TODO: Copy to clipboard.
+        throw new Error("Copy to system clipboard not implemented");
     }
 
     return {
         view: () => m(".create-new-join-link",
-            m(".create-new-join-link__generated",
-                m(".create-new-join-link__generated__input.form-control", {'disabled': true},
-                    m("h3.create-new-join-link__generated__input__text",
-                        generatedJoinLink!!.code,
-                        m("button.btn.create-new-join-link__generated__copy", {onclick: copy},
-                            m("span.icon.icon-paste")
-                        )
-                    ),
-                    m("button.btn.create-new-join-link__generated__reset", {onclick: reset}, m("span.icon.icon-cancel"))
-                )
-            )
+            generatedJoinLink ? m(CreateNewJoinLink_Generated, {joinLink: generatedJoinLink, copy, reset}) : m(CreateNewJoinLink_Create, {createJoinLink})
         )
     }
 }
