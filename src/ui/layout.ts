@@ -43,4 +43,8 @@ export class Layout {
             node
         );
     }
+
+    static splitBlock(title: string, node: Vnode<any, any>): Vnode<any, any> {
+        return m(".block.col-12.col-lg-4.offset-lg-1", m("h4", title), node);
+    }
 }
