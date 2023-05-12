@@ -407,3 +407,10 @@ body, html {
 .expandable-list__list > .base-expandable-list-item:hover {
     background-color: #333;
 }
+
+.create-new-join-link__generated__input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
