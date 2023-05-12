@@ -33,7 +33,7 @@ export class Layout {
     }
 
     static splitColumn(node: Vnode<any, any>): Vnode<any, any> {
-        return m(".col-12.col-lg-4.offset-lg-1", node);
+        return m(".my-3.col-12.col-lg-4.offset-lg-1", node);
     }
 
     static withHeader(text: string, paragraph: string | undefined = undefined, node: Vnode<any, any>): Vnode<any, any> {
@@ -45,6 +45,6 @@ export class Layout {
     }
 
     static splitBlock(title: string, node: Vnode<any, any>): Vnode<any, any> {
-        return m(".block.col-12.col-lg-4.offset-lg-1", m("h4", title), node);
+        return Layout.splitColumn(m(".block", [m("h4", title), node]))
     }
 }

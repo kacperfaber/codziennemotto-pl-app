@@ -2,6 +2,8 @@ import Mithril, {Vnode} from "mithril";
 import m from "mithril";
 import {JoinLink} from "../../../../../services/joinLink/joinLink";
 import {t} from "i18next";
+import {BaseExpandableList} from "../../../base/expandableList/baseExpandableList";
+import {BaseExpandableListItem} from "../../../base/expandableList/item/baseExpandableListItem";
 
 export interface ExpandableJoinLinkListAttrs {
     joinLinks: Array<JoinLink>;
@@ -9,18 +11,20 @@ export interface ExpandableJoinLinkListAttrs {
 }
 
 export function ExpandableJoinLinkList(): Mithril.Component<ExpandableJoinLinkListAttrs> {
-    return {
-        view: (vnode: Vnode<ExpandableJoinLinkListAttrs>) => m(".expandable-join-link-list",
-            m(".expandable-join-link-list__list",
-                vnode.attrs.joinLinks.map(item => m("button.btn.item",
-                    m("p.code", item.code),
-                    m("p.active-until", item.activeUntil))
-                ),
-            ),
+    function createItem(item: JoinLink): Vnode<any, any> {
+        return m(BaseExpandableListItem, {onClick: () => {}, secondary: `${item.id}`, primary: item.code})
+    }
 
-            vnode.attrs.showAllOnClick ? m(".expandable-join-link-footer",
-                m("button.btn.btn-primary", {onclick: vnode.attrs.showAllOnClick}, t("all.show_all"))
-            ) : null
-        )
+    return {
+        view: (vnode: Vnode<ExpandableJoinLinkListAttrs>) => m(BaseExpandableList, {
+            button: {
+                text: t("all.show_all"),
+                onClick: () => {
+                    console.error("joinLink-click not implemented yet.")
+                }
+            },
+            makeItem: (item: JoinLink) => createItem(item),
+            items: vnode.attrs.joinLinks
+        })
     }
 }

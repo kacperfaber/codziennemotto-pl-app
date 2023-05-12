@@ -375,7 +375,7 @@ body, html {
     padding: 25px;
 }
 
-.expandable-join-link-list__list {
+.expandable-list__list {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -383,24 +383,27 @@ body, html {
     justify-content: center;
 }
 
-.expandable-join-link-list__list > .item {
-    border-bottom: 1px solid gray;
-    padding: 10px;
-    width: 100%;
-}
-
-.expandable-join-link-list__list > .item:hover {
-    background-color: #333;
-}
-
-.expandable-join-link-list__list > .item > p.active-until {
-    display: none;
-}
-
-.expandable-join-link-footer {
+.expandable-list__footer {
     margin-top:15px;
     display: flex;
     align-items: center;
     justify-content: right;
     width: 100%;
+}
+
+.expandable-list__list > .base-expandable-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    width: 100%;
+}
+
+.expandable-list__list > .base-expandable-list-item > p.secondary {
+    color: gray;
+}
+
+.expandable-list__list > .base-expandable-list-item:hover {
+    background-color: #333;
 }
