@@ -15,6 +15,9 @@ import {t} from "i18next";
 import route from "mithril/route";
 import {SingleTextSetDailyView} from "../../../components/textSet/textList/daily/singleTextSet/singleTextSetDailyView";
 import {AppNavigator} from "../../../appNavigator";
+import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
+import {JoinLink} from "../../../../services/joinLink/joinLink";
+import {ExpandableJoinLinkList} from "../../../components/joinLinks/list/expandable/expandableJoinLinkList";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -35,6 +38,9 @@ export function TextSetById_Header(): Mithril.Component<TextSetById_HeaderAttrs,
 }
 
 export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
+
+    let joinLinks: Array<JoinLink> | undefined = undefined;
+
     return new class extends BaseStreamComponent<TextSetByIdAttrs, any> {
         private textSetStream: Stream<TextSet | undefined> = stream<TextSet | undefined>(undefined);
         private textsStream: Stream<Array<Text> | undefined> = stream<Array<Text> | undefined>(undefined);
@@ -51,11 +57,13 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
             TextSetService.getSummaryItem(vnode.attrs.id).then(data => this.summaryItemStream(data));
 
+            JoinLinkService.fetchJoinLinks(vnode.attrs.id).then(data => joinLinks = data).catch();
+
             return super.oninit(vnode);
         }
 
         override view(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
-            if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
+            if (!joinLinks || !this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
                 // TODO: Replace with loading...
                 return m("div", "no data for " + vnode.attrs.id);
             }
@@ -81,6 +89,11 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                                 showAllOnClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id),
                                 items: this.textsStreamHook.value!!.slice(0, 5)
                             })
+                        ),
+
+                        Layout.splitBlock(
+                            t("all.join-links"),
+                            m(ExpandableJoinLinkList, {joinLinks: joinLinks!!, showAllOnClick: () => AppNavigator.home()})
                         )
                     )
                 )
