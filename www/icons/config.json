@@ -35,6 +35,12 @@
       "css": "home-1",
       "code": 59395,
       "src": "entypo"
+    },
+    {
+      "uid": "b429436ec5a518c78479d44ef18dbd60",
+      "css": "paste",
+      "code": 61674,
+      "src": "fontawesome"
     }
   ]
 }
