@@ -18,6 +18,7 @@ import {AppNavigator} from "../../../appNavigator";
 import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
 import {JoinLink} from "../../../../services/joinLink/joinLink";
 import {ExpandableJoinLinkList} from "../../../components/joinLinks/list/expandable/expandableJoinLinkList";
+import {CreateNewJoinLink} from "../../../components/joinLinks/create/createNewJoinLink";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -94,6 +95,11 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                         Layout.splitBlock(
                             t("all.join-links"),
                             m(ExpandableJoinLinkList, {joinLinks: joinLinks!!, showAllOnClick: () => AppNavigator.home()})
+                        ),
+
+                        Layout.splitBlock(
+                            t("all.join-links.create-new"),
+                            m(CreateNewJoinLink, {textSetId: vnode.attrs.id})
                         )
                     )
                 )
