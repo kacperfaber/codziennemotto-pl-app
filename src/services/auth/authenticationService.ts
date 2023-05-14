@@ -28,4 +28,9 @@ export class AuthenticationService {
             return AuthenticationApi.current(token);
         });
     }
+
+    static async logout(): Promise<void> {
+        StorageService.deleteCurrentAuth();
+        UserStore.current(undefined);
+    }
 }

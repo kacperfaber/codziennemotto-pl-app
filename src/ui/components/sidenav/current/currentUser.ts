@@ -18,8 +18,7 @@ function SideNavCurrentUser_Presentation() {
         view: (vnode: Vnode<{ user: User }>) => m("#app_sidenav__current__presentation",
             m("h5.username", vnode.attrs.user.username),
             m("p.email", vnode.attrs.user.email),
-            m("button.btn#app_sidenav__current__presentation__logout", {onclick: () => console.error("logout not implemented yet.")}, t("all.logout"))
-            /* TODO: Logout not implemented yet. */
+            m("button.btn#app_sidenav__current__presentation__logout", {onclick: AuthenticationService.logout}, t("all.logout"))
         )
     }
 }

@@ -34,6 +34,10 @@ export class StorageService {
     static getCurrentAuth(): AuthResult | undefined {
         return StorageService.getItem(StorageKeys.auth);
     }
+
+    static deleteCurrentAuth() {
+        StorageService.remove(StorageKeys.auth);
+    }
     
     static getCurrentToken(): string | undefined {
         const auth = StorageService.getCurrentAuth();
