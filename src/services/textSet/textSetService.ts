@@ -135,4 +135,18 @@ export class TextSetService {
             return await TextSetApi.deleteTextSet(token, textSetId);
         })
     }
+
+    private static async tryFindTextById(textId: number): Promise<Text | undefined> {
+        return (await TextSetStore.getTextById(textId))?.text ?? undefined;
+    }
+
+    static async getTextById(textId: number, forceRefresh: boolean): Promise<Text> {
+        const textFromStore = await this.tryFindTextById(textId);
+
+        if (!textFromStore || forceRefresh) {
+            return await TextSetApi.getTextById(textId);
+        }
+
+        return textFromStore;
+    }
 }
