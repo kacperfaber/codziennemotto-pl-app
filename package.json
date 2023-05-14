@@ -9,7 +9,7 @@
     "webpack-dev": "npx webpack --config webpack.config.dev.js",
     "fontello-open": "fontello-cli --config www/icons/config.json open",
     "fontello-install": "fontello-cli --config www/icons/config.json --css www/icons/css --font www/icons/font install",
-    "run-dev": "npm run webpack-dev && cordova run"
+    "run-dev": "npm run webpack-dev && serve www"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -23,7 +23,8 @@
     "bootstrap": "^5.2.3",
     "bootstrap-dark-5": "^1.1.3",
     "i18next": "^22.4.15",
-    "mithril": "^2.2.2"
+    "mithril": "^2.2.2",
+    "serve": "^14.2.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
