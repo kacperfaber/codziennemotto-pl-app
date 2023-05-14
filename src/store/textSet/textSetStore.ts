@@ -2,6 +2,7 @@ import {TextSet} from "../../services/textSet/textSet";
 import stream from "mithril/stream";
 import {Summary} from "../../services/textSet/summary";
 import {JoinLink} from "../../services/joinLink/joinLink";
+import {Text} from "../../services/textSet/text";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
@@ -34,6 +35,42 @@ class _TextSetStore {
         return textSetFromNotMine;
     }
 
+    async findTextInBoth(predicate: (text: Text) => boolean): Promise<{text: Text, textSet: TextSet} | undefined> {
+        const all = [...this.mine() ?? [], ...this.notMine() ?? []];
+        for (let textSet of all) {
+            if (textSet.texts === undefined) continue;
+
+            for (let text of textSet.texts) {
+                if (predicate(text)) {
+                    return {text, textSet};
+                }
+            }
+        }
+
+        return undefined;
+    }
+
+    async findAllTextInBoth(predicate: (text: Text) => boolean): Promise<{text: Text, textSet: TextSet}[]> {
+        const all = [...this.mine() ?? [], ...this.notMine() ?? []];
+        const toRet: Array<{text: Text, textSet: TextSet}> = [];
+
+        const appendReturnValue = (d: {text: Text, textSet: TextSet}) => {
+            toRet.push(d);
+        };
+
+        for (let textSet of all) {
+            if (textSet.texts === undefined) continue;
+
+            for (let text of textSet.texts) {
+                if (predicate(text)) {
+                    appendReturnValue({text, textSet});
+                }
+            }
+        }
+
+        return toRet;
+    }
+
     async resetTextsInTextSetById(textSetId: number): Promise<TextSet | undefined> {
         const clearTextSets = (textSet: TextSet) => {
             textSet.texts = undefined;
@@ -61,6 +98,10 @@ class _TextSetStore {
 
     async setJoinLinks(textSetId: number, joinLinks: Array<JoinLink> | undefined) {
         await this.tryUpdateTextSet(textSetId, t => t.joinLinks = joinLinks);
+    }
+
+    async getTextById(textId: number): Promise<{text: Text, textSet: TextSet} | undefined> {
+        return this.findTextInBoth((text) => text.id == textId);
     }
 }
 
