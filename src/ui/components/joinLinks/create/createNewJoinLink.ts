@@ -3,6 +3,7 @@ import m from "mithril";
 import {JoinLink} from "../../../../services/joinLink/joinLink";
 import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
 import {t} from "i18next";
+import {Clipboard} from "../../../../cap/clipboard";
 
 interface CreateNewJoinLink_CreateAttrs {
     createJoinLink: () => void
@@ -66,9 +67,8 @@ export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril
         redraw();
     }
 
-    const copy = () => {
-        // TODO: Copy to clipboard.
-        throw new Error("Copy to system clipboard not implemented");
+    const copy = async () => {
+        await Clipboard.saveString(generatedJoinLink!!.code);
     }
 
     return {
