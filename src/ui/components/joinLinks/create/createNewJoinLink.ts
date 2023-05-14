@@ -44,7 +44,7 @@ export interface CreateNewJoinLinkAttrs {
 }
 
 export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril.Component<CreateNewJoinLinkAttrs> {
-    let generatedJoinLink: JoinLink | undefined = {code: 'ABC123', id: 0, activeUntil: "2023-01-01", textSetId: 1};
+    let generatedJoinLink: JoinLink | undefined = undefined;
 
     const onSuccess = (d: JoinLink) => {
         generatedJoinLink = d;
@@ -68,6 +68,7 @@ export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril
     }
 
     const copy = async () => {
+        // TODO: Show success.
         await Clipboard.saveString(generatedJoinLink!!.code);
     }
 
