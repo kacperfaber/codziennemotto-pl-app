@@ -144,7 +144,9 @@ export class TextSetService {
         const textFromStore = await this.tryFindTextById(textId);
 
         if (!textFromStore || forceRefresh) {
-            return await TextSetApi.getTextById(textId);
+            return await withTokenAsync(async (token: string) =>
+                await TextSetApi.getTextById(token, textId)
+            )
         }
 
         return textFromStore;
