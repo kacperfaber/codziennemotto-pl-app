@@ -6,8 +6,9 @@ import {CreateNewTextSetRoute} from "./routes/textSet/createNew/createNewTextSet
 import {TextSetByIdRoute} from "./routes/textSet/byId/textSetByIdRoute";
 import {Links} from "./links";
 import {AddTextRoute} from "./routes/textSet/addNew/addTextRoute";
+import {AllReadersRoute} from "./routes/textSet/readers/all/allReadersRoute";
 
-export const Routes ={
+export const Routes = {
     [Links.welcome]: WelcomeRoute,
 
     /* login */
@@ -21,5 +22,8 @@ export const Routes ={
 
     /* texts */
     [Links.allTextsLink]: AllTextsRoute,
-    [Links.addTextToTextSet]: AddTextRoute
+    [Links.addTextToTextSet]: AddTextRoute,
+
+    "/readers/:textSetId": AllReadersRoute
+
 }

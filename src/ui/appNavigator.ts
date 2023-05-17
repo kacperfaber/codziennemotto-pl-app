@@ -29,4 +29,8 @@ export class AppNavigator {
     public static addText(textSetId: number) {
         route.set(`/text-set/${textSetId}/add`);
     }
+
+    public static allReaders(textSetId: number) {
+        route.set(Links.allReaders.replace(":textSetId", textSetId.toString(0)));
+    }
 }
