@@ -4,6 +4,9 @@ import {ReaderIncludeUser} from "../../../../../services/reader/reader";
 import {ReaderService} from "../../../../../services/reader/readerService";
 import m from "mithril";
 import {Layout} from "../../../../layout";
+import {BaseList} from "../../../../components/base/list/baseList";
+import {NoData} from "../../../../components/noData/noData";
+import {BaseListItem} from "../../../../components/base/list/item/baseListItem";
 
 export interface AllReadersAttrs {
     textSetId: number;
@@ -28,9 +31,21 @@ export function AllReaders(): Mithril.Component<AllReadersAttrs> {
 
         override view({attrs}: Vnode<AllReadersAttrs>) {
             return Layout.free(
-                Layout.centerNodes(
+                readers ?
 
-                )
+                    Layout.centerNodes(
+                        m(BaseList, {
+                            items: readers!!,
+                            makeItem: (item: ReaderIncludeUser) => m(BaseListItem, {
+                                primary: item.userName,
+                                secondary: item.reader.id.toString(),
+                                onClick: () => {
+                                }
+                            })
+                        })
+                    )
+
+                    : m(NoData)
             )
         }
     }
