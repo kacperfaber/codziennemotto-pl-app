@@ -21,4 +21,12 @@ export class ReaderService {
 
         return readersFromStore;
     }
+
+    public static async deleteReader(textSetId: number, readerId: number): Promise<void> {
+        await TextSetStore.resetReaders(textSetId);
+
+        return await withTokenAsync(async (token) =>
+            await ReaderApi.deleteReader(token, textSetId, readerId)
+        );
+    }
 }

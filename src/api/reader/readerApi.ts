@@ -7,4 +7,9 @@ export class ReaderApi {
         const url = `${Config.apiUrl}/text-set/${textSetId}/readers/include-users`;
         return httpRequest({method: 'GET', url, headers: {'Authorization': token}});
     }
+
+    static async deleteReader(token: string, textSetId: number, readerId: number): Promise<void> {
+        const url = `${Config.apiUrl}/text-set/${textSetId}/readers/${readerId}`;
+        return httpRequest({method: 'DELETE', url, headers: {'Authorization': token}});
+    }
 }
