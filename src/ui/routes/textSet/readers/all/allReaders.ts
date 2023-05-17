@@ -40,6 +40,8 @@ export function AllReaders(): Mithril.Component<AllReadersAttrs> {
                                 primary: item.userName,
                                 secondary: item.reader.id.toString(),
                                 onClick: () => {
+                                    // TODO: Reader view not implemented.
+                                    throw "Reader view not implemented";
                                 }
                             })
                         })
