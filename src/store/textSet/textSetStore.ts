@@ -3,6 +3,7 @@ import stream from "mithril/stream";
 import {Summary} from "../../services/textSet/summary";
 import {JoinLink} from "../../services/joinLink/joinLink";
 import {Text} from "../../services/textSet/text";
+import {Reader, ReaderIncludeUser} from "../../services/reader/reader";
 
 class _TextSetStore {
     public mine = stream<TextSet[] | undefined>(undefined);
@@ -102,6 +103,19 @@ class _TextSetStore {
 
     async getTextById(textId: number): Promise<{text: Text, textSet: TextSet} | undefined> {
         return this.findTextInBoth((text) => text.id == textId);
+    }
+
+    async resetReaders(textSetId: number){
+        await this.tryUpdateTextSet(textSetId, (ts) => ts.readers = undefined);
+    }
+
+    async setReaders(textSetId: number, readers: Array<ReaderIncludeUser>) {
+        await this.tryUpdateTextSet(textSetId, t => t.readers = readers);
+    }
+
+    async getReaders(textSetId: number): Promise<Array<ReaderIncludeUser> | undefined> {
+        const textSet = await this.getTextSet(textSetId);
+        return textSet?.readers;
     }
 }
 
