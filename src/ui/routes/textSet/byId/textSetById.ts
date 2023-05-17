@@ -19,6 +19,8 @@ import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
 import {JoinLink} from "../../../../services/joinLink/joinLink";
 import {ExpandableJoinLinkList} from "../../../components/joinLinks/list/expandable/expandableJoinLinkList";
 import {CreateNewJoinLink} from "../../../components/joinLinks/create/createNewJoinLink";
+import {BaseExpandableList} from "../../../components/base/expandableList/baseExpandableList";
+import {BaseExpandableListItem} from "../../../components/base/expandableList/item/baseExpandableListItem";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -84,11 +86,19 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                             }))
                         ),
 
-                        Layout.splitColumn(
-                            m(ExpandableTextList, {
-                                title: t("all.texts"),
-                                showAllOnClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id),
-                                items: this.textsStreamHook.value!!.slice(0, 5)
+                        Layout.splitBlock(
+                            t("all.texts"),
+                            m(BaseExpandableList, {
+                                items: this.textsStreamHook.value!!.slice(0,5),
+                                button: {
+                                    text: t("all.show_all"),
+                                    onClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id)
+                                },
+                                makeItem: (i: Text) => m(BaseExpandableListItem, {
+                                    onClick: () => AppNavigator.textById(i.id),
+                                    primary: i.text,
+                                    secondary: i.id?.toString()
+                                })
                             })
                         ),
 

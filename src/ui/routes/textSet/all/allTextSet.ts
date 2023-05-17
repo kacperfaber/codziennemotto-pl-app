@@ -9,6 +9,7 @@ import {TextSet} from "../../../../services/textSet/textSet";
 import {NoData} from "../../../components/noData/noData";
 import {BaseComponent, BaseStreamComponent} from "../../../base/baseComponent";
 import {TextSetService} from "../../../../services/textSet/textSetService";
+import {LoadingScreen} from "../../../components/base/screens/loading/loadingScreen";
 
 interface AllTextSet_WithDataAttrs {
     mine: TextSet[];
@@ -61,7 +62,7 @@ export function AllTextSet() {
                 validateData(this.mine.value, this.notMine.value) ? m(AllTextSet_WithData, {
                     mine: this.mine.value!!,
                     notMine: this.notMine.value!!
-                }) : m(NoData) /* TODO: Replace with loading. */
+                }) : m(LoadingScreen)
             )
         }
     }
