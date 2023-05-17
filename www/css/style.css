@@ -444,3 +444,6 @@ body, html {
     color: gray;
 }
 
+#app_loading {
+    text-align: center;
+}
