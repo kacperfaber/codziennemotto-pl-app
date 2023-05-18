@@ -7,6 +7,7 @@ import {TextSetByIdRoute} from "./routes/textSet/byId/textSetByIdRoute";
 import {Links} from "./links";
 import {AddTextRoute} from "./routes/textSet/addNew/addTextRoute";
 import {AllReadersRoute} from "./routes/textSet/readers/all/allReadersRoute";
+import {TextByIdRoute} from "./routes/textSet/textById/textByIdRoute";
 
 export const Routes = {
     [Links.welcome]: WelcomeRoute,
@@ -24,6 +25,6 @@ export const Routes = {
     [Links.allTextsLink]: AllTextsRoute,
     [Links.addTextToTextSet]: AddTextRoute,
 
-    "/readers/:textSetId": AllReadersRoute
-
+    "/readers/:textSetId": AllReadersRoute,
+    [Links.textByIdLink]: TextByIdRoute
 }

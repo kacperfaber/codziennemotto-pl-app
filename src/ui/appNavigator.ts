@@ -6,8 +6,8 @@ export class AppNavigator {
         route.set(`/text-set/by-id/${id}`);
     }
 
-    public static textById(id: number): void {
-        throw new Error("Not implemented right now.")
+    public static textById(textSetId: number, textId: number): void {
+        route.set(`/text-set/${textSetId}/text/${textId}`);
     }
 
     public static allTextsByTextSetId(id: number): void {

@@ -7,5 +7,6 @@ export const Links = {
     login: "/login",
     createNewTextSet: "/text-set/new",
     addTextToTextSet: "/text-set/:textSetId/add",
-    allReaders: "/text-set/:textSetId/readers"
+    allReaders: "/text-set/:textSetId/readers",
+    textByIdLink: "/text-set/:textSetId/text/:textId"
 }

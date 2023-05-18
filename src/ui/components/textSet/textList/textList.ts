@@ -8,7 +8,7 @@ import {AppNavigator} from "../../../appNavigator";
 export function TextListItem() {
     return {
         view: (vnode: Vnode<{text: Text}>) => m("button.btn.text-list-item",
-            {onclick: () => AppNavigator.textById(vnode.attrs.text.id)},
+            {onclick: () => AppNavigator.textById(vnode.attrs.text.textSetId, vnode.attrs.text.id)},
             m("h5.text", vnode.attrs.text.text),
             m("p.id", `${t("all.id")}: ${vnode.attrs.text.id}`)
         )

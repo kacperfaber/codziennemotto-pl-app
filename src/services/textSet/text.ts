@@ -3,4 +3,5 @@ export interface Text{
     order: number;
     shown: string | null;
     text: string;
+    textSetId: number;
 }

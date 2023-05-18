@@ -95,7 +95,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                                     onClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id)
                                 },
                                 makeItem: (i: Text) => m(BaseExpandableListItem, {
-                                    onClick: () => AppNavigator.textById(i.id),
+                                    onClick: () => AppNavigator.textById(i.textSetId, i.id),
                                     primary: i.text,
                                     secondary: i.id?.toString()
                                 })
