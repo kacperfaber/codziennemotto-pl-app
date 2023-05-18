@@ -7,6 +7,8 @@ import {Text} from "../../../../services/textSet/text";
 import {LoadingScreen} from "../../../components/base/screens/loading/loadingScreen";
 import {TextSetPreview} from "../../../components/textSet/textSetPreview/textSetPreview";
 import {TextSetService} from "../../../../services/textSet/textSetService";
+import {t} from "i18next";
+import {AdvancedTextPreview} from "../../../components/text/preview/advanced/advancedTextPreview";
 
 interface TextByIdAttrs {
     textId: number;
@@ -31,6 +33,10 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
         return m(TextSetPreview, {title: textSet.title, description: textSet.description, id: textSet.id})
     }
 
+    function renderTextPreview(text: Text): Vnode<any, any> {
+        return m(AdvancedTextPreview, {text});
+    }
+
     return new class extends BaseComponent<any, any> {
 
         override oninit(vnode: Mithril.Vnode<TextByIdAttrs, Mithril._NoLifecycle<any>>): any {
@@ -50,8 +56,10 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
                 Layout.centerNodes(
                     renderTextSetPreview(textSet),
 
-                    m("h3", "Text is: "),
-                    m("p", text.text)
+                    Layout.splitBlock(
+                        t("all.text"),
+                        renderTextPreview(text)
+                    )
                 )
             ) : m(LoadingScreen);
         }
