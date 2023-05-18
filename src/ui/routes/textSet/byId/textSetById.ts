@@ -21,6 +21,8 @@ import {ExpandableJoinLinkList} from "../../../components/joinLinks/list/expanda
 import {CreateNewJoinLink} from "../../../components/joinLinks/create/createNewJoinLink";
 import {BaseExpandableList} from "../../../components/base/expandableList/baseExpandableList";
 import {BaseExpandableListItem} from "../../../components/base/expandableList/item/baseExpandableListItem";
+import {Optional} from "../../../optional";
+import {AddText} from "../../../components/text/addText/addText"
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -110,6 +112,11 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                         Layout.splitBlock(
                             t("all.join-links.create-new"),
                             m(CreateNewJoinLink, {textSetId: vnode.attrs.id})
+                        ),
+
+                        Layout.splitBlock(
+                            t("text-set.text.create-new"),
+                            m(AddText, {textSetId: vnode.attrs.id})
                         )
                     )
                 )
