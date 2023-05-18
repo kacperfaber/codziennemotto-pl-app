@@ -9,6 +9,7 @@ import {TextSetPreview} from "../../../components/textSet/textSetPreview/textSet
 import {TextSetService} from "../../../../services/textSet/textSetService";
 import {t} from "i18next";
 import {AdvancedTextPreview} from "../../../components/text/preview/advanced/advancedTextPreview";
+import {TextOwnerActions} from "../../../components/text/ownerActions/textOwnerActions";
 
 interface TextByIdAttrs {
     textId: number;
@@ -53,12 +54,26 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
 
         override view(vnode: Vnode<TextByIdAttrs>): Mithril.Children {
             return textSet && text ? Layout.free(
-                Layout.centerNodes(
-                    renderTextSetPreview(textSet),
+                m(".container",
+                    m(".row",
 
-                    Layout.splitBlock(
-                        t("all.text"),
-                        renderTextPreview(text)
+                        m(".col-12",
+                            renderTextSetPreview(textSet)
+                        ),
+
+                        Layout.splitBlock(
+                            t("all.text"),
+                            renderTextPreview(text)
+                        ),
+
+                        Layout.splitBlock(
+                            t("all.text.owner-actions"),
+                            m(TextOwnerActions, {
+                                textId: vnode.attrs.textId,
+                                textSetId: vnode.attrs.textSetId,
+                                onDeleted: () => {} // TODO: Not implemented
+                            })
+                        )
                     )
                 )
             ) : m(LoadingScreen);
