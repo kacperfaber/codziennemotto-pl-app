@@ -22,5 +22,9 @@ describe("optional.ts", function () {
             expect(verifyObject({i: 5, test: null})).toBeFalsy();
         });
 
+
+        test("false if entire object `d` is null", function () {
+            expect(verifyObject(null)).toBeFalsy();
+        });
     });
 })
