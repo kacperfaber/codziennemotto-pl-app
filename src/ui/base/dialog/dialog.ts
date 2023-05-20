@@ -1,8 +1,8 @@
 import Mithril from "mithril";
 import {DialogManager} from "./dialogManager";
 
-export interface DialogController {
-    close: (data: any) => void;
+export interface DialogController<T> {
+    close: (data: T) => void;
 }
 
 export type DialogPlacement = "center";
@@ -27,7 +27,7 @@ export class DialogComponent implements Mithril.Component<any, any> {
         throw "Dialog options must be overrided";
     }
 
-    protected ctrl: DialogController = {
+    protected ctrl: DialogController<any> = {
         close: (data: any = undefined) => DialogManager.close(this)
     }
 }
@@ -54,7 +54,7 @@ export class AwaitableDialogComponent<T> extends DialogComponent {
         this.reject();
     }
 
-    override ctrl: DialogController = {
+    override ctrl: DialogController<T> = {
         close: (data: T) => {
             DialogManager.close(this);
             this.tryResolve(data);
