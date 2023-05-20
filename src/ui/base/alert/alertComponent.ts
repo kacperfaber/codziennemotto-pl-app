@@ -4,7 +4,7 @@ import {AlertManager} from "./alertManager";
 export type AlertKind = "warning" | "danger" | "primary" | "secondary" | "success" | "info";
 
 export class AlertComponent implements Mithril.Component<any, any> {
-    constructor(public attrs: any) {
+    constructor(public attrs: any, public disappearSeconds: number | undefined = 5) {
     }
 
     onbeforeremove(vnode: Mithril.VnodeDOM<any, Mithril._NoLifecycle<any>>): Promise<any> | void {
@@ -16,6 +16,9 @@ export class AlertComponent implements Mithril.Component<any, any> {
     }
 
     oncreate(vnode: Mithril.VnodeDOM<any, Mithril._NoLifecycle<any>>): any {
+        if (this.disappearSeconds) {
+            setTimeout(() => vnode.dom.remove(), this.disappearSeconds * 1000);
+        }
     }
 
     oninit(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): any {

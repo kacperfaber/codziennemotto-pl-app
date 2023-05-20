@@ -7,10 +7,10 @@ interface NodeAlertAttrs {
     kind: AlertKind;
 }
 
-export function NodeAlert(attrs: NodeAlertAttrs) {
+export function NodeAlert(attrs: NodeAlertAttrs, disappearSeconds: number | undefined) {
     return new class extends AlertComponent {
         constructor() {
-            super(attrs);
+            super(attrs, disappearSeconds);
         }
 
         override view(vnode: Mithril.Vnode<NodeAlertAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {

@@ -7,10 +7,10 @@ interface StringAlertAttrs {
     kind: AlertKind;
 }
 
-export function StringAlert(attrs: StringAlertAttrs): AlertComponent {
+export function StringAlert(attrs: StringAlertAttrs, disappearSeconds: number | undefined): AlertComponent {
     return new class extends AlertComponent {
         constructor() {
-            super(attrs);
+            super(attrs, disappearSeconds);
         }
 
         override view(vnode: Mithril.Vnode<StringAlertAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
