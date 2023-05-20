@@ -1,14 +1,15 @@
-import Mithril, {redraw} from "mithril";
+import {redraw} from "mithril";
+import {DialogComponent} from "./dialog";
 
 export class DialogManager {
-    public static dialogs: (Mithril.Component<any, any>)[] = [];
+    public static dialogs: (DialogComponent)[] = [];
 
-    public static push(dialog: Mithril.Component<any, any>) {
+    public static push(dialog: DialogComponent) {
         DialogManager.dialogs.push(dialog);
         redraw();
     }
 
-    public static close(dialog: Mithril.Component<any, any>){
+    public static close(dialog: DialogComponent){
         DialogManager.dialogs = DialogManager.dialogs.filter(comp => comp !== dialog);
         redraw();
     }
