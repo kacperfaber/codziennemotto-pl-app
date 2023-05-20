@@ -475,3 +475,24 @@ body, html {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.dialog-frame.place-center.slide-in {
+    animation-name: slideIn-placeCenter;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes slideIn-placeCenter {
+    0% {
+        top: -100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        opacity: 1;
+    }
+}

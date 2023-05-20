@@ -7,8 +7,11 @@ export interface DialogController {
 
 export type DialogPlacement = "center";
 
+export type DialogAnimationIn = "slide-in";
+
 export interface DialogOptions {
     placement: DialogPlacement;
+    animationIn: DialogAnimationIn | undefined;
 }
 
 export class DialogComponent implements Mithril.Component<any, any> {
