@@ -3,6 +3,7 @@ import {Navbar} from "./components/navbar/navbar";
 import {SideNav} from "./components/sidenav/sideNav";
 import Mithril from "mithril";
 import {DialogContainer} from "./base/dialog/dialogContainer";
+import {AlertContainer} from "./base/alert/alertContainer";
 
 export class Layout {
     static free(node: Vnode<any, any>): Vnode<any, any> {
@@ -11,6 +12,7 @@ export class Layout {
             m(SideNav),
             m("#app_container.animate-in", node),
             m(DialogContainer),
+            m(AlertContainer)
         );
     }
 

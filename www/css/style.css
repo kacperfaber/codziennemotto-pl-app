@@ -496,3 +496,29 @@ body, html {
         opacity: 1;
     }
 }
+
+.alert-container {
+    top: 5px;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (max-width: 768px){
+    .string-alert {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.string-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
