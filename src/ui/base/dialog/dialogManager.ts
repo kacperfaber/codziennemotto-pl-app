@@ -1,4 +1,4 @@
-import m, {redraw} from "mithril";
+import {redraw} from "mithril";
 import {AwaitableDialogComponent, DialogComponent} from "./dialog";
 import {DialogInfo} from "./info/dialogInfo";
 import {DialogYesNo, YesNo} from "./yesNo/dialogYesNo";
@@ -30,5 +30,10 @@ export class DialogManager {
 
     public static yesNoAsync(title: string, text: string): Promise<YesNo> {
         return DialogManager.pushAsync(new DialogYesNo({title, text}));
+    }
+
+    public static clear(): void {
+        DialogManager.dialogs = [];
+        redraw();
     }
 }
