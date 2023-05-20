@@ -2,7 +2,7 @@ import Mithril from "mithril";
 import {DialogManager} from "./dialogManager";
 
 export interface DialogController {
-    close: () => void;
+    close: (data: any) => void;
 }
 
 export type DialogPlacement = "center";
@@ -28,10 +28,36 @@ export class DialogComponent implements Mithril.Component<any, any> {
     }
 
     protected ctrl: DialogController = {
-        close: () => DialogManager.close(this)
+        close: (data: any = undefined) => DialogManager.close(this)
     }
 }
 
-export class AwaitableDialogComponent extends DialogComponent {
+export class AwaitableDialogComponent<T> extends DialogComponent {
+    constructor(attrs: any) {
+        super(attrs);
+    }
 
+    public resolve: ((t: T) => void) | undefined = undefined;
+    public reject: (() => void) | undefined = undefined;
+
+    protected tryResolve(t: T) {
+        if (!this.resolve) {
+            throw "Cannot resolve";
+        }
+        this.resolve(t);
+    }
+
+    protected tryReject() {
+        if (!this.reject) {
+            throw "Cannot reject";
+        }
+        this.reject();
+    }
+
+    override ctrl: DialogController = {
+        close: (data: T) => {
+            DialogManager.close(this);
+            this.tryResolve(data);
+        }
+    }
 }
