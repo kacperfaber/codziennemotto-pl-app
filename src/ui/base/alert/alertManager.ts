@@ -1,5 +1,7 @@
-import {AlertComponent} from "./alertComponent";
-import {redraw} from "mithril";
+import {AlertComponent, AlertKind} from "./alertComponent";
+import {redraw, Vnode} from "mithril";
+import {StringAlert} from "./stringAlert";
+import {NodeAlert} from "./nodeAlert";
 
 export class AlertManager {
     public static alerts: AlertComponent[] = [];
@@ -12,5 +14,13 @@ export class AlertManager {
     public static close(ac: AlertComponent): void {
         this.alerts = this.alerts.filter(d => d !== ac);
         redraw();
+    }
+
+    public static pushString(text: string, kind: AlertKind = "info") {
+        AlertManager.push(StringAlert({kind, text}));
+    }
+
+    public static pushAlert(node: Vnode<any, any>, kind: AlertKind = "info") {
+        AlertManager.push(NodeAlert({kind, node}));
     }
 }

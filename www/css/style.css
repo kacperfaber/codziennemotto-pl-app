@@ -510,14 +510,14 @@ body, html {
 }
 
 @media (max-width: 768px){
-    .string-alert {
+    .base-alert {
         width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-.string-alert {
+.base-alert {
     display: flex;
     justify-content: space-between;
     align-items: center;

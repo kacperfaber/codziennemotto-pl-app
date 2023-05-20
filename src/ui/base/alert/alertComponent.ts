@@ -1,6 +1,8 @@
 import Mithril from "mithril";
 import {AlertManager} from "./alertManager";
 
+export type AlertKind = "warning" | "danger" | "primary" | "secondary" | "success" | "info";
+
 export class AlertComponent implements Mithril.Component<any, any> {
     constructor(public attrs: any) {
     }
