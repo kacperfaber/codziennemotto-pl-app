@@ -5,6 +5,12 @@ export interface DialogController {
     close: () => void;
 }
 
+export type DialogPlacement = "center";
+
+export interface DialogOptions {
+    placement: DialogPlacement;
+}
+
 export class DialogComponent implements Mithril.Component<any, any> {
     onbeforeremove(vnode: Mithril.VnodeDOM<any, Mithril._NoLifecycle<any>>): Promise<any> | void {
         return undefined;
@@ -28,6 +34,10 @@ export class DialogComponent implements Mithril.Component<any, any> {
 
     view(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
         return null;
+    }
+
+    options(): DialogOptions {
+        throw "Dialog options must be overrided";
     }
 
     protected ctrl: DialogController = {

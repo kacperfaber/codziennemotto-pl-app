@@ -460,3 +460,18 @@ body, html {
     border-bottom: 1px solid #444;
     padding: 5px;
 }
+
+.dialog-container {
+}
+
+.dialog-frame {
+    padding: 15px;
+    background-color: #111;
+}
+
+.dialog-frame.place-center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
