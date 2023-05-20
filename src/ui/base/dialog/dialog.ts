@@ -12,6 +12,9 @@ export interface DialogOptions {
 }
 
 export class DialogComponent implements Mithril.Component<any, any> {
+    constructor(public attrs: any) {
+    }
+
     onbeforeremove(vnode: Mithril.VnodeDOM<any, Mithril._NoLifecycle<any>>): Promise<any> | void {
         return undefined;
     }
