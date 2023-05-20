@@ -3,6 +3,7 @@ import {Layout} from "../../layout";
 import {t} from "i18next";
 import {AuthenticationService} from "../../../services/auth/authenticationService";
 import {BaseComponent} from "../../base/baseComponent";
+import {AlertManager} from "../../base/alert/alertManager";
 
 export const Login = function () {
     const state = {login: '', password: ''};
@@ -23,6 +24,7 @@ export const Login = function () {
         setSubmitButtonContent();
         activateSuccessMessage();
         disableFailedMessage();
+        AlertManager.pushString(t("all.login.logged_in_successfully"), "success");
     }
 
     function onFailed() {
@@ -31,6 +33,7 @@ export const Login = function () {
         enableSubmit();
         activateFailedMessage();
         disableSuccessMessage();
+        AlertManager.pushString(t("all.login.login_error"), "danger");
     }
 
     function activateFailedMessage() {
