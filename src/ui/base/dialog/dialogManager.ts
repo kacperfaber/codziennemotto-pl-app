@@ -1,7 +1,7 @@
 import m, {redraw} from "mithril";
 import {AwaitableDialogComponent, DialogComponent} from "./dialog";
 import {DialogInfo} from "./info/dialogInfo";
-import {DialogYesNo, YesNo} from "./prompt/dialogYesNo";
+import {DialogYesNo, YesNo} from "./yesNo/dialogYesNo";
 
 export class DialogManager {
     public static dialogs: (DialogComponent)[] = [];

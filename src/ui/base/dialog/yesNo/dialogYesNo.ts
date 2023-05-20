@@ -24,7 +24,7 @@ export class DialogYesNo extends AwaitableDialogComponent<YesNo> {
     }
 
     override view({attrs}: Vnode<DialogYesNoAttrs>): Mithril.Children | void | null {
-        return m(".dialog-prompt",
+        return m(".dialog-yes-no",
             m(".modal-dialog", {role: 'document'},
                 m(".modal-content",
                     m(".modal-header",
