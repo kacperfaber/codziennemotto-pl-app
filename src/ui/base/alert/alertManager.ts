@@ -16,11 +16,11 @@ export class AlertManager {
         redraw();
     }
 
-    public static pushString(text: string, kind: AlertKind = "info", disSec: number | undefined = undefined) {
+    public static pushString(text: string, kind: AlertKind = "info", disSec: number | undefined = 1000) {
         AlertManager.push(StringAlert({kind, text}, disSec));
     }
 
-    public static pushAlert(node: Vnode<any, any>, kind: AlertKind = "info", disSec: number | undefined = undefined) {
+    public static pushAlert(node: Vnode<any, any>, kind: AlertKind = "info", disSec: number | undefined = 1000) {
         AlertManager.push(NodeAlert({kind, node}, disSec));
     }
 }
