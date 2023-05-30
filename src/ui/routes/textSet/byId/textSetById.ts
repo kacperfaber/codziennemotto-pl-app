@@ -1,18 +1,14 @@
-import Mithril, {Vnode} from "mithril";
+import Mithril from "mithril";
+import m, {Vnode} from "mithril";
 import {BaseStreamComponent} from "../../../base/baseComponent";
 import {Layout} from "../../../layout";
-import m from "mithril";
 import {TextSetService} from "../../../../services/textSet/textSetService";
 import stream from "mithril/stream";
 import Stream from "mithril/stream";
 import {TextSet} from "../../../../services/textSet/textSet";
 import {Text} from "../../../../services/textSet/text";
 import {SummaryItem} from "../../../../services/textSet/summary";
-import {
-    ExpandableTextList
-} from "../../../components/textSet/textList/expandable/expandableTextList";
 import {t} from "i18next";
-import route from "mithril/route";
 import {SingleTextSetDailyView} from "../../../components/textSet/textList/daily/singleTextSet/singleTextSetDailyView";
 import {AppNavigator} from "../../../appNavigator";
 import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
@@ -21,8 +17,9 @@ import {ExpandableJoinLinkList} from "../../../components/joinLinks/list/expanda
 import {CreateNewJoinLink} from "../../../components/joinLinks/create/createNewJoinLink";
 import {BaseExpandableList} from "../../../components/base/expandableList/baseExpandableList";
 import {BaseExpandableListItem} from "../../../components/base/expandableList/item/baseExpandableListItem";
-import {Optional} from "../../../optional";
 import {AddText} from "../../../components/text/addText/addText"
+import {LoadingScreen} from "../../../components/base/screens/loading/loadingScreen";
+import {UserStore} from "../../../../store/user/userStore";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -55,23 +52,33 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
         private textsStreamHook = this.useStream(this.textsStream);
         private summaryStreamHook = this.useStream(this.summaryItemStream);
 
+
         override oninit(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): any {
-            TextSetService.getById(vnode.attrs.id).then(data => this.textSetStream(data));
+            TextSetService.getById(vnode.attrs.id).then(data => this.textSetStream(data))
+                .catch(() => {
+                });
 
-            TextSetService.getAllVisibleTexts(vnode.attrs.id).then(data => this.textsStream(data));
+            TextSetService.getAllVisibleTexts(vnode.attrs.id).then(data => this.textsStream(data))
+                .catch(() => {
+                });
 
-            TextSetService.getSummaryItem(vnode.attrs.id).then(data => this.summaryItemStream(data));
+            TextSetService.getSummaryItem(vnode.attrs.id).then(data => this.summaryItemStream(data))
+                .catch(() => {
+                });
 
-            JoinLinkService.fetchJoinLinks(vnode.attrs.id).then(data => joinLinks = data).catch();
+            JoinLinkService.fetchJoinLinks(vnode.attrs.id).then(data => joinLinks = data)
+                .catch(() => {
+                });
 
             return super.oninit(vnode);
         }
 
         override view(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
-            if (!joinLinks || !this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
-                // TODO: Replace with loading...
-                return m("div", "no data for " + vnode.attrs.id);
+            if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
+                return m(LoadingScreen)
             }
+
+            const isTextSetOwner = this.textSetStreamHook.value?.ownerId == UserStore.current()?.id;
 
             return Layout.free(
                 m(".container",
@@ -91,7 +98,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                         Layout.splitBlock(
                             t("all.texts"),
                             m(BaseExpandableList, {
-                                items: this.textsStreamHook.value!!.slice(0,5),
+                                items: this.textsStreamHook.value!!.slice(0, 5),
                                 button: {
                                     text: t("all.show_all"),
                                     onClick: () => AppNavigator.allTextsByTextSetId(vnode.attrs.id)
@@ -104,20 +111,23 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                             })
                         ),
 
-                        Layout.splitBlock(
+                        isTextSetOwner ? Layout.splitBlock(
                             t("all.join-links"),
-                            m(ExpandableJoinLinkList, {joinLinks: joinLinks!!, showAllOnClick: () => AppNavigator.home()})
-                        ),
+                            m(ExpandableJoinLinkList, {
+                                joinLinks: joinLinks!!,
+                                showAllOnClick: () => AppNavigator.home()
+                            })
+                        ) : null,
 
-                        Layout.splitBlock(
+                        isTextSetOwner ? Layout.splitBlock(
                             t("all.join-links.create-new"),
                             m(CreateNewJoinLink, {textSetId: vnode.attrs.id})
-                        ),
+                        ) : null,
 
-                        Layout.splitBlock(
+                        isTextSetOwner ? Layout.splitBlock(
                             t("text-set.text.create-new"),
                             m(AddText, {textSetId: vnode.attrs.id})
-                        )
+                        ) : null
                     )
                 )
             )
@@ -125,3 +135,8 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
     }
 }
+
+
+// TODO: The feature of split view by textSetOwner and reader works, but not perfectly.
+//  In console I'm getting an error that system tried to fetch joinLinks, and got 400 error.
+//  I need to rebuild it, to avoid joinLinks fetching.
