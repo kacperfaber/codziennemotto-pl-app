@@ -522,3 +522,18 @@ body, html {
     justify-content: space-between;
     align-items: center;
 }
+
+#app_home__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#app_home__summary_list > .expandable-list > .expandable-list__list > .base-expandable-list-item {
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
