@@ -52,6 +52,12 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
         private textsStreamHook = this.useStream(this.textsStream);
         private summaryStreamHook = this.useStream(this.summaryItemStream);
 
+        private isTextSetOwner: boolean | undefined = undefined;
+
+        fetchJoinLinks(textSetId: number) {
+            JoinLinkService.fetchJoinLinks(textSetId).then(data => joinLinks = data)
+                .catch(() => {});
+        }
 
         override oninit(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): any {
             TextSetService.getById(vnode.attrs.id).then(data => this.textSetStream(data))
@@ -66,19 +72,21 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                 .catch(() => {
                 });
 
-            JoinLinkService.fetchJoinLinks(vnode.attrs.id).then(data => joinLinks = data)
-                .catch(() => {
-                });
-
             return super.oninit(vnode);
+        }
+
+        override onbeforeupdate(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>, old: Mithril.VnodeDOM<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): boolean | void {
+            if (this.isTextSetOwner == undefined && this.textSetStreamHook.value) {
+                this.isTextSetOwner = TextSetService.isTextSetOwner(this.textSetStreamHook.value!!);
+                if (this.isTextSetOwner) this.fetchJoinLinks(this.textSetStreamHook.value!!.id);
+            }
+            return super.onbeforeupdate(vnode, old);
         }
 
         override view(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
             if (!this.textSetStreamHook.value || !this.textsStreamHook.value || !this.summaryStreamHook.value) {
                 return m(LoadingScreen)
             }
-
-            const isTextSetOwner = this.textSetStreamHook.value?.ownerId == UserStore.current()?.id;
 
             return Layout.free(
                 m(".container",
@@ -111,7 +119,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                             })
                         ),
 
-                        isTextSetOwner ? Layout.splitBlock(
+                        this.isTextSetOwner && joinLinks ? Layout.splitBlock(
                             t("all.join-links"),
                             m(ExpandableJoinLinkList, {
                                 joinLinks: joinLinks!!,
@@ -119,12 +127,12 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                             })
                         ) : null,
 
-                        isTextSetOwner ? Layout.splitBlock(
+                        this.isTextSetOwner ? Layout.splitBlock(
                             t("all.join-links.create-new"),
                             m(CreateNewJoinLink, {textSetId: vnode.attrs.id})
                         ) : null,
 
-                        isTextSetOwner ? Layout.splitBlock(
+                        this.isTextSetOwner ? Layout.splitBlock(
                             t("text-set.text.create-new"),
                             m(AddText, {textSetId: vnode.attrs.id})
                         ) : null
@@ -135,8 +143,3 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
     }
 }
-
-
-// TODO: The feature of split view by textSetOwner and reader works, but not perfectly.
-//  In console I'm getting an error that system tried to fetch joinLinks, and got 400 error.
-//  I need to rebuild it, to avoid joinLinks fetching.

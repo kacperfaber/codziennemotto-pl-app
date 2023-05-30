@@ -4,6 +4,7 @@ import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 import {Text} from "./text";
 import {Summary, SummaryItem} from "./summary";
+import {UserStore} from "../../store/user/userStore";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
@@ -150,5 +151,11 @@ export class TextSetService {
         }
 
         return textFromStore;
+    }
+
+    static isTextSetOwner(textSet: TextSet): boolean | undefined {
+        let userId = UserStore.current()?.id;
+        if (userId === undefined) return undefined;
+        return userId == textSet.ownerId;
     }
 }
