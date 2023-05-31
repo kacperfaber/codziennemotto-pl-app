@@ -1,12 +1,11 @@
 import m, {Vnode} from "mithril";
-import {t} from "i18next";
-import route from "mithril/route";
-import {Links} from "../../links";
+import {AppNavigator} from "../../appNavigator";
 
-type Link = { route: string, text: string };
+type Link = { onClick: () => void, text: string };
 
 const LinkList: Array<Link> = [
-    {route: Links.home, text: "all.home"}
+    {onClick: AppNavigator.home, text: "all.home"},
+    {onClick: AppNavigator.allTextSets, text: "all.all_text_set"}
 ];
 
 interface SideNavLinkAttrs {
@@ -15,7 +14,7 @@ interface SideNavLinkAttrs {
 
 const SideNavLink = {
     view: (vnode: Vnode<SideNavLinkAttrs, never>) => m(".app-sidenav-link",
-        m("button.btn.app-sidenav-link-button", {onclick: () => route.set(vnode.attrs.link.route)}, t(vnode.attrs.link.text))
+        m("button.btn.app-sidenav-link-button", {onclick: vnode.attrs.link.onClick}, vnode.attrs.link.text)
     )
 }
 

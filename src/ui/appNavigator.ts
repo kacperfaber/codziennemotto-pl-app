@@ -14,6 +14,10 @@ export class AppNavigator {
         route.set(`/text-set/texts/all/${id}`);
     }
 
+    public static allTextSets(): void {
+        route.set("/text-set/all");
+    }
+
     public static home() {
         route.set(Links.home);
     }
