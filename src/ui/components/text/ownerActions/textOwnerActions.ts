@@ -13,8 +13,7 @@ export function TextOwnerActions({attrs}: Vnode<TextOwnerActionsAttrs>): Mithril
     function deleteText() {
         TextSetService.deleteText(attrs.textSetId, attrs.textId)
             .then(attrs.onDeleted)
-            .catch(() => {
-            }) // TODO: Show Error Page
+            .catch(() => {}) // TODO: Show Error Page
     }
 
     return {

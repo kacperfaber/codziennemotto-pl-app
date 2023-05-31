@@ -10,13 +10,15 @@ import {TextSetService} from "../../../../services/textSet/textSetService";
 import {t} from "i18next";
 import {AdvancedTextPreview} from "../../../components/text/preview/advanced/advancedTextPreview";
 import {TextOwnerActions} from "../../../components/text/ownerActions/textOwnerActions";
+import {AlertManager} from "../../../base/alert/alertManager";
+import {AppNavigator} from "../../../appNavigator";
 
 interface TextByIdAttrs {
     textId: number;
     textSetId: number;
 }
 
-export function TextById(): Mithril.Component<TextByIdAttrs> {
+export function TextById({attrs}: Vnode<TextByIdAttrs>): Mithril.Component<TextByIdAttrs> {
     let textSet: TextSet | undefined = undefined;
     let text: Text | undefined = undefined;
 
@@ -38,6 +40,11 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
         return m(AdvancedTextPreview, {text});
     }
 
+    function onTextDeleted() {
+        AlertManager.pushString(t("all.text.deleted"), "info");
+        AppNavigator.textSetById(attrs.textSetId);
+    }
+
     return new class extends BaseComponent<any, any> {
 
         override oninit(vnode: Mithril.Vnode<TextByIdAttrs, Mithril._NoLifecycle<any>>): any {
@@ -53,7 +60,12 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
         }
 
         override view(vnode: Vnode<TextByIdAttrs>): Mithril.Children {
-            return textSet && text ? Layout.free(
+
+            if (!textSet || !text) return m(LoadingScreen)
+
+            const isTextSetOwner = TextSetService.isTextSetOwner(textSet);
+
+            return Layout.free(
                 m(".container",
                     m(".row",
 
@@ -66,17 +78,17 @@ export function TextById(): Mithril.Component<TextByIdAttrs> {
                             renderTextPreview(text)
                         ),
 
-                        Layout.splitBlock(
+                        isTextSetOwner ? Layout.splitBlock(
                             t("all.text.owner-actions"),
                             m(TextOwnerActions, {
                                 textId: vnode.attrs.textId,
                                 textSetId: vnode.attrs.textSetId,
-                                onDeleted: () => {} // TODO: Not implemented
+                                onDeleted: onTextDeleted
                             })
-                        )
+                        ) : null
                     )
                 )
-            ) : m(LoadingScreen);
+            )
         }
     }
 }
