@@ -79,7 +79,7 @@ export function TextById({attrs}: Vnode<TextByIdAttrs>): Mithril.Component<TextB
                         ),
 
                         isTextSetOwner ? Layout.splitBlock(
-                            t("all.text.owner-actions"),
+                            t("all.text-owner-actions"),
                             m(TextOwnerActions, {
                                 textId: vnode.attrs.textId,
                                 textSetId: vnode.attrs.textSetId,

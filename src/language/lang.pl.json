@@ -1,0 +1,48 @@
+{
+  "all": {
+    "home": "Strona główna",
+    "logout": "Wyloguj się",
+    "all_text_set": "Wszystkie zestawy tekstów",
+    "mine_text_sets": "Moje zestawy tekstów",
+    "not_mine_text_sets": "Nie moje zestawy tekstów",
+    "from_text_set": "From {{textSetName}}",
+    "texts": "Teksty",
+
+    "show_all": "Pokaż wszystkie",
+    "join-links": "Linki do dołączania",
+    "success": "Powodzenie",
+    "text": "Tekst",
+    "text-owner-actions": "Opcje właściciela",
+    "delete": "Usuń"
+  },
+  "join-links": {
+    "create-new": "Utwórz"
+  },
+  "navbar": {
+    "title": "glizda88"
+  },
+  "welcome": {
+    "header": "Witaj!",
+    "description": "Aby kontynuować musisz sie zalogować"
+  },
+  "all_text_set": {
+    "there_is_only_your_text_sets": "To twoje zestawy tekstów, którymi możesz zarządzać",
+    "there_is_text_sets_you_read": "To zestawy tekstów które należą do kogoś innego, możesz tylko je czytać"
+  },
+  "text-set": {
+    "text": {
+      "create-new": "Utwórz nowy tekst i dodaj go do listy."
+    }
+  },
+  "add-text": {
+    "input": {
+      "label": "Tu wprowadź treść tego tekstu"
+    },
+    "submit": "Dodaj"
+  },
+
+  "home": {
+    "hello_user": "Cześć {{username}}!",
+    "you_have_x_mottos_today": "Na dzisiaj masz {{x}} tekstów do przeczytania :D"
+  }
+}
