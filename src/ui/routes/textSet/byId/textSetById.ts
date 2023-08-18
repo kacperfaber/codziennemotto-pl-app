@@ -128,7 +128,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                         ) : null,
 
                         this.isTextSetOwner ? Layout.splitBlock(
-                            t("all.join-links.create-new"),
+                            t("join-links.create-new"),
                             m(CreateNewJoinLink, {textSetId: vnode.attrs.id})
                         ) : null,
 

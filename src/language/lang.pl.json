@@ -13,7 +13,8 @@
     "success": "Powodzenie",
     "text": "Tekst",
     "text-owner-actions": "Opcje właściciela",
-    "delete": "Usuń"
+    "delete": "Usuń",
+    "sign_in": "Zaloguj się"
   },
   "join-links": {
     "create-new": "Utwórz"
