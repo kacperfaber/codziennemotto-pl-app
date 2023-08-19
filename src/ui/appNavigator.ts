@@ -35,6 +35,10 @@ export class AppNavigator {
     }
 
     public static allReaders(textSetId: number) {
-        route.set(Links.allReaders.replace(":textSetId", textSetId.toString(0)));
+        route.set(Links.allReadersLink.replace(":textSetId", textSetId.toString()));
+    }
+
+    public static readerById(textSetId: number, readerId: number){
+        route.set(Links.readerByIdLink.replace(":textSetId", textSetId.toString()).replace(":readerId", readerId.toString()))
     }
 }

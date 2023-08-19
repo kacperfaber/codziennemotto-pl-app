@@ -60,5 +60,11 @@
   "reader-by-id": {
     "title": "Czytający",
     "body": "Ten czytający ma dostęp do listy {{textSet}}"
+  },
+
+  "all-readers": {
+    "title": "Wszyscy czytający",
+    "body": "Ci czytający mają dostęp do listy {{textSet}}",
+    "could-not-load-data": "Nie można było załadować danych, spróbuj ponownie"
   }
 }

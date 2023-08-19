@@ -25,8 +25,8 @@ export const Routes = {
     /* texts */
     [Links.allTextsLink]: AllTextsRoute,
 
-    "/readers/:textSetId": AllReadersRoute,
+    [Links.allReadersLink]: AllReadersRoute,
     [Links.textByIdLink]: TextByIdRoute,
     [Links.home]: HomeRoute,
-    [Links.readerById]: ReaderByIdRoute
+    [Links.readerByIdLink]: ReaderByIdRoute
 }

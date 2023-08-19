@@ -19,7 +19,9 @@ import {BaseExpandableList} from "../../../components/base/expandableList/baseEx
 import {BaseExpandableListItem} from "../../../components/base/expandableList/item/baseExpandableListItem";
 import {AddText} from "../../../components/text/addText/addText"
 import {LoadingScreen} from "../../../components/base/screens/loading/loadingScreen";
-import {UserStore} from "../../../../store/user/userStore";
+import {ReaderIncludeUser} from "../../../../services/reader/reader";
+import {ReaderService} from "../../../../services/reader/readerService";
+import {ExpandableReaderList} from "../../../components/reader/list/expandableReaderList";
 
 export interface TextSetByIdAttrs {
     id: number;
@@ -42,6 +44,7 @@ export function TextSetById_Header(): Mithril.Component<TextSetById_HeaderAttrs,
 export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
     let joinLinks: Array<JoinLink> | undefined = undefined;
+    let readers: Array<ReaderIncludeUser> | undefined = undefined;
 
     return new class extends BaseStreamComponent<TextSetByIdAttrs, any> {
         private textSetStream: Stream<TextSet | undefined> = stream<TextSet | undefined>(undefined);
@@ -56,7 +59,13 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
 
         fetchJoinLinks(textSetId: number) {
             JoinLinkService.fetchJoinLinks(textSetId).then(data => joinLinks = data)
-                .catch(() => {});
+                .catch(() => {
+                });
+        }
+
+        fetchReaders(textSetId: number) {
+            ReaderService.getReaders(textSetId)
+                .then(data => readers = data);
         }
 
         override oninit(vnode: Mithril.Vnode<TextSetByIdAttrs, Mithril._NoLifecycle<any>>): any {
@@ -79,6 +88,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
             if (this.isTextSetOwner == undefined && this.textSetStreamHook.value) {
                 this.isTextSetOwner = TextSetService.isTextSetOwner(this.textSetStreamHook.value!!);
                 if (this.isTextSetOwner) this.fetchJoinLinks(this.textSetStreamHook.value!!.id);
+                if (this.isTextSetOwner) this.fetchReaders(this.textSetStreamHook.value!!.id)
             }
             return super.onbeforeupdate(vnode, old);
         }
@@ -118,6 +128,11 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                                 })
                             })
                         ),
+
+                        this.isTextSetOwner && readers ? Layout.splitBlock(
+                            t("all.reader.all-readers"),
+                            m(ExpandableReaderList, {readers: readers, textSetId: vnode.attrs.id})
+                        ) : null,
 
                         this.isTextSetOwner && joinLinks ? Layout.splitBlock(
                             t("all.join-links"),
