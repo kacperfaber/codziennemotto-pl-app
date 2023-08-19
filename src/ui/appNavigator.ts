@@ -38,11 +38,19 @@ export class AppNavigator {
         route.set(Links.allReadersLink.replace(":textSetId", textSetId.toString()));
     }
 
-    public static readerById(textSetId: number, readerId: number){
+    public static readerById(textSetId: number, readerId: number) {
         route.set(Links.readerByIdLink.replace(":textSetId", textSetId.toString()).replace(":readerId", readerId.toString()))
     }
 
     public static joinUsingLink() {
         route.set(Links.joinUsingLink);
+    }
+
+    public static register() {
+        route.set(Links.register);
+    }
+
+    public static confirm(emailAddress: string) {
+        route.set(Links.confirmLink.replace(":emailAddress", emailAddress));
     }
 }

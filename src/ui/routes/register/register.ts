@@ -6,6 +6,7 @@ import {Layout} from "../../layout";
 import {t} from "i18next";
 import {DialogManager} from "../../base/dialog/dialogManager";
 import {StringAlert} from "../../base/alert/stringAlert";
+import {AppNavigator} from "../../appNavigator";
 
 let username = "";
 let emailAddress = "";
@@ -17,12 +18,11 @@ function v(e: InputEvent): string {
 }
 
 const onSuccess = () => {
-    console.log("success");
+    AppNavigator.confirm(emailAddress);
     DialogManager.info(t("all.success"), t("register.check-email"));
 }
 
 const onFailed = () => {
-    console.log("failed");
     failed = true;
     redraw();
     DialogManager.info(t("all.something-went-wrong"), t("register.could-not-register"));

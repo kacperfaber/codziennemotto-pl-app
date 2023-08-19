@@ -11,6 +11,7 @@ import {HomeRoute} from "./routes/home/homeRoute";
 import {ReaderByIdRoute} from "./routes/textSet/readers/byId/readerByIdRoute";
 import {JoinUsingLinkRoute} from "./routes/textSet/joinUsingLink/joinUsingLinkRoute";
 import {RegisterRoute} from "./routes/register/registerRoute";
+import {ConfirmRoute} from "./routes/register/confirm/confirmRoute";
 
 export const Routes = {
     [Links.welcome]: WelcomeRoute,
@@ -33,5 +34,6 @@ export const Routes = {
     [Links.readerByIdLink]: ReaderByIdRoute,
     [Links.joinUsingLink]: JoinUsingLinkRoute,
 
-    [Links.register]: RegisterRoute
+    [Links.register]: RegisterRoute,
+    [Links.confirmLink]: ConfirmRoute
 }

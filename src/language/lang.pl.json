@@ -7,7 +7,7 @@
     "not_mine_text_sets": "Nie moje zestawy tekstów",
     "from_text_set": "From {{textSetName}}",
     "texts": "Teksty",
-
+    "ok": "OK",
     "show_all": "Pokaż wszystkie",
     "join-links": "Linki do dołączania",
     "success": "Powodzenie",
@@ -44,6 +44,7 @@
     "create-new": "Utwórz",
     "join-using-link": "Dołącz przy użyciu linka",
     "join-link-code": "Kod z linka",
+    "use": "Użyj kodu z linka",
     "use-link": "Użyj kodu z linka",
     "joined-to-text-set": "Właśnie dołączyłeś do listy {{textSet}}.",
     "could-not-use-join-link": "Nie można było użyć linku"
@@ -87,6 +88,26 @@
     "could-not-load-data": "Nie można było załadować danych, spróbuj ponownie"
   },
 
+  "register_confirm": {
+    "title": "Kod wysłany na mail",
+    "body": "Sprawdź swoją skrzynkę",
+
+    "code": {
+      "label": "Kod aktywacyjny",
+      "placeholder": "Kod aktywacyjny"
+    },
+
+    "email": {
+      "label": "Adres email"
+    },
+
+    "could-not-confirm": "Nie można było potwierdzić kodu, spróbuj ponownie",
+    "confirmed-successfully": "Potwierdzono pomyślnie",
+    "you-can-login-now": "Teraz możesz się zalogować",
+    "try-again": "Sprobój ponownie",
+    "submit": "Potwierdź"
+  },
+
   "register": {
     "title": "Zarejestruj się",
     "body": "Aby używać aplikacji",
@@ -95,7 +116,7 @@
       "placeholder": "Nazwa użytkownika"
     },
 
-    "email_address": {
+    "email": {
       "label": "Adres email",
       "placeholder": "Adres email"
     },
