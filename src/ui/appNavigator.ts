@@ -41,4 +41,8 @@ export class AppNavigator {
     public static readerById(textSetId: number, readerId: number){
         route.set(Links.readerByIdLink.replace(":textSetId", textSetId.toString()).replace(":readerId", readerId.toString()))
     }
+
+    public static joinUsingLink() {
+        route.set(Links.joinUsingLink);
+    }
 }

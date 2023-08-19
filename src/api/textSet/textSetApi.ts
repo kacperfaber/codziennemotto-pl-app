@@ -3,6 +3,7 @@ import {Config} from "../../config/config";
 import {httpRequest} from "../httpRequest";
 import {Text} from "../../services/textSet/text";
 import {Summary} from "../../services/textSet/summary";
+import {Reader} from "../../services/reader/reader";
 
 export class TextSetApi {
     static async getById(id: number, token: string): Promise<TextSet> {
@@ -61,5 +62,10 @@ export class TextSetApi {
     static async getTextById(token: string, textId: number): Promise<Text> {
         const url = `${Config.apiUrl}/text-set/text/by-id/${textId}`;
         return await httpRequest({method: 'GET', url, headers: {"Authorization": token}})
+    }
+
+    static async joinWithCode(token: string, code: string): Promise<Reader> {
+        const url = `${Config.apiUrl}/text-set/join-with-code/${code}`;
+        return await httpRequest({method: "POST", url, headers: {"Authorization": token}});
     }
 }

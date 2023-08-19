@@ -1,10 +1,11 @@
 import {TextSet} from "./textSet";
-import {withTokenAsync} from "../withToken";
+import {withToken, withTokenAsync} from "../withToken";
 import {TextSetApi} from "../../api/textSet/textSetApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 import {Text} from "./text";
 import {Summary, SummaryItem} from "./summary";
 import {UserStore} from "../../store/user/userStore";
+import {Reader} from "../reader/reader";
 
 export class TextSetService {
     static async fetchById(id: number): Promise<TextSet> {
@@ -157,5 +158,10 @@ export class TextSetService {
         let userId = UserStore.current()?.id;
         if (userId === undefined) return undefined;
         return userId == textSet.ownerId;
+    }
+
+    static async joinWithCode(code: string): Promise<Reader> {
+        await TextSetStore.resetTextSets();
+        return withTokenAsync((token) => TextSetApi.joinWithCode(token, code));
     }
 }

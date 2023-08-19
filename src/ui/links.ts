@@ -8,5 +8,6 @@ export const Links = {
     createNewTextSet: "/text-set/new",
     allReadersLink: "/text-set/:textSetId/readers",
     textByIdLink: "/text-set/:textSetId/text/:textId",
-    readerByIdLink: "/text-set/:textSetId/reader/:readerId"
+    readerByIdLink: "/text-set/:textSetId/reader/:readerId",
+    joinUsingLink: "/text-set/join-using-link"
 }

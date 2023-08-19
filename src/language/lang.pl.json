@@ -24,10 +24,28 @@
     },
     "yes": "Tak",
     "no": "Nie",
-    "something-went-wrong": "Coś poszło nie tak"
+    "something-went-wrong": "Coś poszło nie tak",
+    "login": {
+      "logged_in_successfully": "Zalogowano pomyślnie",
+      "login_error": "Błąd podczas logowania"
+    }
+  },
+  "login": {
+    "submit": "Zaloguj się",
+    "login_success": "Zalogowano pomyślnie",
+    "login_error": "Błąd podczas logowania",
+    "password_label": "Hasło",
+    "password_placeholder": "Hasło",
+    "login_label": "Adres email lub nazwa użytkownika",
+    "login_placeholder": "Email albo nazwa użytkownika"
   },
   "join-links": {
-    "create-new": "Utwórz"
+    "create-new": "Utwórz",
+    "join-using-link": "Dołącz przy użyciu linka",
+    "join-link-code": "Kod z linka",
+    "use-link": "Użyj kodu z linka",
+    "joined-to-text-set": "Właśnie dołączyłeś do listy {{textSet}}.",
+    "could-not-use-join-link": "Nie można było użyć linku"
   },
   "navbar": {
     "title": "glizda88"
