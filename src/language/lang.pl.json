@@ -15,9 +15,16 @@
     "text-owner-actions": "Opcje właściciela",
     "delete": "Usuń",
     "sign_in": "Zaloguj się",
+    "confirmation": "Potwierdzenie",
     "reader": {
-      "delete-reader": "Usuń czytającego"
-    }
+      "delete-reader": "Usuń czytającego",
+      "reader-is-deleted": "Czytający {{reader}} został usunięty.",
+      "could-not-delete": "Nie można było usunąć czytającego, spróbuj ponownie",
+      "really-want-to-delete-reader": "Czy napewno chcesz usunąć {{reader}} z listy {{textSet}}"
+    },
+    "yes": "Tak",
+    "no": "Nie",
+    "something-went-wrong": "Coś poszło nie tak"
   },
   "join-links": {
     "create-new": "Utwórz"
@@ -48,5 +55,10 @@
   "home": {
     "hello_user": "Cześć {{username}}!",
     "you_have_x_mottos_today": "Na dzisiaj masz {{x}} tekstów do przeczytania :D"
+  },
+
+  "reader-by-id": {
+    "title": "Czytający",
+    "body": "Ten czytający ma dostęp do listy {{textSet}}"
   }
 }
