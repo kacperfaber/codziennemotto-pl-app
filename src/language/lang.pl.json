@@ -28,7 +28,8 @@
     "login": {
       "logged_in_successfully": "Zalogowano pomyślnie",
       "login_error": "Błąd podczas logowania"
-    }
+    },
+    "register_in": "Zarejestruj się"
   },
   "login": {
     "submit": "Zaloguj się",
@@ -84,5 +85,27 @@
     "title": "Wszyscy czytający",
     "body": "Ci czytający mają dostęp do listy {{textSet}}",
     "could-not-load-data": "Nie można było załadować danych, spróbuj ponownie"
+  },
+
+  "register": {
+    "title": "Zarejestruj się",
+    "body": "Aby używać aplikacji",
+    "username": {
+      "label": "Nazwa użytkownika",
+      "placeholder": "Nazwa użytkownika"
+    },
+
+    "email_address": {
+      "label": "Adres email",
+      "placeholder": "Adres email"
+    },
+
+    "password": {
+      "label": "Hasło",
+      "placeholder": "Hasło"
+    },
+
+    "could-not-register": "Przepraszamy, ale nie można było cie zarejestrować. Sprawdź dane i spróbuj ponownie.",
+    "check-email": "Proszę - sprawdź email."
   }
 }

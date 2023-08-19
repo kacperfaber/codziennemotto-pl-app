@@ -9,5 +9,7 @@ export const Links = {
     allReadersLink: "/text-set/:textSetId/readers",
     textByIdLink: "/text-set/:textSetId/text/:textId",
     readerByIdLink: "/text-set/:textSetId/reader/:readerId",
-    joinUsingLink: "/text-set/join-using-link"
+    joinUsingLink: "/text-set/join-using-link",
+    register: "/register",
+    confirm: "/register/confirm"
 }
