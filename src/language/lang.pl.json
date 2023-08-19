@@ -14,7 +14,10 @@
     "text": "Tekst",
     "text-owner-actions": "Opcje właściciela",
     "delete": "Usuń",
-    "sign_in": "Zaloguj się"
+    "sign_in": "Zaloguj się",
+    "reader": {
+      "delete-reader": "Usuń czytającego"
+    }
   },
   "join-links": {
     "create-new": "Utwórz"

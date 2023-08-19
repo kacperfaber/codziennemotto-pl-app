@@ -51,4 +51,8 @@ export class Layout {
     static splitBlock(title: string, node: Vnode<any, any>): Vnode<any, any> {
         return Layout.splitColumn(m(".block", [m("h4", title), node]))
     }
+
+    static block(child: Vnode<any, any>) {
+        return m(".block.my-2", child);
+    }
 }
