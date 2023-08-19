@@ -4,6 +4,7 @@ import {t} from "i18next";
 import {AuthenticationService} from "../../../services/auth/authenticationService";
 import {BaseComponent} from "../../base/baseComponent";
 import {AlertManager} from "../../base/alert/alertManager";
+import {AppNavigator} from "../../appNavigator";
 
 export const Login = function () {
     const state = {login: '', password: ''};
@@ -132,6 +133,10 @@ export const Login = function () {
                             m("button#app_login__form__submit.btn.btn-primary", {type: 'submit'},
                                 m("span.content", t("login.submit")),
                                 m("span.spinner.spinner-border.spinner-border-sm")
+                            ),
+
+                            m("button.btn.btn-link", {onclick: AppNavigator.register, type: 'button'},
+                                t("all.instead-register-in")
                             )
                         )
                     )
