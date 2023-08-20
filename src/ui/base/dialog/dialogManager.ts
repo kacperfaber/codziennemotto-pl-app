@@ -2,6 +2,7 @@ import {redraw} from "mithril";
 import {AwaitableDialogComponent, DialogComponent} from "./dialog";
 import {DialogInfo} from "./info/dialogInfo";
 import {DialogYesNo, YesNo} from "./yesNo/dialogYesNo";
+import {DialogChoose, DialogChooseAnswer} from "./choose/dialogChoose";
 
 export class DialogManager {
     public static dialogs: (DialogComponent)[] = [];
@@ -18,6 +19,11 @@ export class DialogManager {
 
     public static info(title: string, text: string) {
         DialogManager.dialogs.push(DialogInfo({title, text}))
+    }
+
+    public static choose(title: string, text: string, option1: string, option2: string): Promise<DialogChooseAnswer | undefined> {
+        let dial = new DialogChoose({title, text, option1, option2});
+        return DialogManager.pushAsync(dial);
     }
 
     public static pushAsync<T>(dialog: AwaitableDialogComponent<T>): Promise<T> {
