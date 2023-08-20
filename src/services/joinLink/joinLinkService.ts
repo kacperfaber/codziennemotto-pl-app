@@ -1,5 +1,5 @@
 import {JoinLink} from "./joinLink";
-import {withTokenAsync} from "../withToken";
+import {withToken, withTokenAsync} from "../withToken";
 import {JoinLinkApi} from "../../api/joinLink/joinLinkApi";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 
@@ -20,6 +20,14 @@ export class JoinLinkService {
             const joinLinks = await JoinLinkApi.fetchJoinLinks(token, textSetId);
             await TextSetStore.setJoinLinks(textSetId, joinLinks);
             return joinLinks;
+        })
+    }
+
+    public static async deleteJoinLink(textSetId: number, joinLinkId: number): Promise<void> {
+        await TextSetStore.tryResetJoinLinks(textSetId);
+
+        return withToken(token => {
+            return JoinLinkApi.deleteJoinLink(token, textSetId, joinLinkId);
         })
     }
 }
