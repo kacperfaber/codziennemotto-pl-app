@@ -3,6 +3,7 @@ import {StorageService} from "../storage/storageService";
 import {User} from "../user/user";
 import {withToken} from "../withToken";
 import {UserStore} from "../../store/user/userStore";
+import {TextSetStore} from "../../store/textSet/textSetStore";
 
 export interface AuthResult {
     id: number;
@@ -19,6 +20,9 @@ export class AuthenticationService {
 
         StorageService.setCurrentAuth(result);
         UserStore.current(result satisfies User);
+
+        /* Clear TextSet store to force refresh, when another user will sign in.*/
+        await TextSetStore.resetTextSets();
 
         return true;
     }
