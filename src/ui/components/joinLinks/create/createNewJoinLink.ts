@@ -3,7 +3,7 @@ import m from "mithril";
 import {JoinLink} from "../../../../services/joinLink/joinLink";
 import {JoinLinkService} from "../../../../services/joinLink/joinLinkService";
 import {t} from "i18next";
-import {Clipboard} from "../../../../cap/clipboard";
+import {ClipboardService} from "../../../../cap/clipboardService";
 
 interface CreateNewJoinLink_CreateAttrs {
     createJoinLink: () => void
@@ -69,7 +69,7 @@ export function CreateNewJoinLink(vnode: Vnode<CreateNewJoinLinkAttrs>): Mithril
 
     const copy = async () => {
         // TODO: Show success.
-        await Clipboard.saveString(generatedJoinLink!!.code);
+        await ClipboardService.saveString(generatedJoinLink!!.code);
     }
 
     return {
