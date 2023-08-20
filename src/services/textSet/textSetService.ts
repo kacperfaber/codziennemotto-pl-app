@@ -49,7 +49,7 @@ export class TextSetService {
     }
 
     static async getNotMine(forceRefresh = false): Promise<Array<TextSet>> {
-        const data = TextSetStore.mine();
+        const data = TextSetStore.notMine();
 
         if (!data || forceRefresh) {
             return this.fetchNotMine();
