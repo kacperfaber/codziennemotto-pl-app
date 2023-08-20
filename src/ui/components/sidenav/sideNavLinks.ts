@@ -12,6 +12,7 @@ const LinkList: Array<Link> = [
     {visibility: "only_anonymous", onClick: AppNavigator.register, text: () => t("all.register_in")},
     {visibility: "only_user", onClick: AppNavigator.home, text: () => t("all.home")},
     {visibility: "only_user", onClick: AppNavigator.allTextSets, text: () => t("all.all_text_set")},
+    {visibility: "only_user", onClick: AppNavigator.createTextSet, text: () => t("all.create-text-set")},
     {visibility: "only_user", onClick: AppNavigator.joinUsingLink, text: () => t("join-links.join-using-link")}
 ];
 

@@ -57,4 +57,8 @@ export class AppNavigator {
     public static confirm(emailAddress: string) {
         route.set(Links.confirmLink.replace(":emailAddress", emailAddress));
     }
+
+    public static createTextSet() {
+        route.set(Links.createNewTextSet);
+    }
 }

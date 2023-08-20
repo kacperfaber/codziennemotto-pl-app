@@ -38,7 +38,7 @@ export class Confirm extends BaseComponent<ConfirmAttrs, any> {
                     Layout.withHeader(t("register_confirm.title"), t("register_confirm.body") ?? undefined,
                         m("form.form", {onsubmit: (e: Event) => onSubmit(e, vnode.attrs.emailAddress)},
                             m(".form-floating.my-2",
-                                m("input[type=email]#app_register_confirm__email_address.form-control", {value: vnode.attrs.emailAddress}),
+                                m("input[type=email]#app_register_confirm__email_address.form-control", {disabled: true, value: vnode.attrs.emailAddress}),
                                 m("label", {"for": 'app_register_confirm__email_address'}, t("register_confirm.email.label"))
                             ),
 

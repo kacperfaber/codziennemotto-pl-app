@@ -49,26 +49,32 @@ export function CreateNewTextSet() {
             // TODO: Missing some headers and texts.
             return Layout.free(
                 m("#app_text_set_create_new",
-                    Layout.center(
+                    Layout.centerNodes(
+                        Layout.withHeader(
+                            t("create-text-set.title"),
+                            t("create-text-set.body") ?? undefined,
+                            m("div")
+                        ),
+
                         m("form#app_create_new_text_set__form", {onsubmit: onSubmit},
                             m(".form-floating#app_create_new_text_set__form__title",
                                 m("input[type=text]#app_create_new_text_set__form__input_title.form-control", {
                                     onchange: onTitleChanged,
-                                    'placeholder': t("text-set.create-new.input-title.placeholder")
+                                    'placeholder': t("create-text-set.form.title.placeholder")
                                 }),
-                                m("label", {'for': 'app_create_new_text_set__form__input_title'}, t("text-set.create-new.input-title.label"))
+                                m("label", {'for': 'app_create_new_text_set__form__input_title'}, t("create-text-set.form.title.label"))
                             ),
 
                             m(".form-floating#app_create_new_text_set__form__description",
                                 m("input[type=text]#app_create_new_text_set__form__input_description.form-control", {
                                     onchange: onDescriptionChanged,
-                                    'placeholder': t("text-set.create-new.input-description.placeholder")
+                                    'placeholder': t("create-text-set.form.description.placeholder")
                                 }),
-                                m("label", {'for': 'app_create_new_text_set__form__input_description'}, t("text-set.create-new.input-description.label"))
+                                m("label", {'for': 'app_create_new_text_set__form__input_description'}, t("create-text-set.form.description.placeholder"))
                             ),
 
                             /* Replace with spinner. TODO */
-                            m("button#app_create_new_text_set__form__submit[type=submit].btn.btn-primary", t("text-set.create-new.submit"))
+                            m("button#app_create_new_text_set__form__submit[type=submit].btn.btn-primary", t("all.ok"))
                         )
                     )
                 )

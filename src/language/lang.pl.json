@@ -19,6 +19,7 @@
     "confirmation": "Potwierdzenie",
     "copy": "Skopiuj",
     "deleted-successfully": "Usunięto pomyślnie",
+    "create-text-set": "Utwórz listę",
     "copy-success": "Skopiowano do schowka",
     "reader": {
       "all-readers": "Wszyscy czytający",
@@ -142,5 +143,20 @@
     },
     "title": "Lista linków",
     "body": "Które są dostępne w liście"
+  },
+
+  "create-text-set": {
+    "title": "Utwórz nową listę",
+    "body": "Wpisz tutaj jej dane i kliknij OK...",
+    "form": {
+      "title": {
+        "label": "Tytuł listy",
+        "placeholder": "Tytuł listy"
+      },
+      "description": {
+        "label": "Opis listy",
+        "placeholder": "Opis listy"
+      }
+    }
   }
 }

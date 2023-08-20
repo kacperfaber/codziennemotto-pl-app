@@ -16,6 +16,17 @@ type JoinLinksListAttrs = {
     textSetId: number;
 }
 
+let joinLinks: Array<JoinLink> | undefined;
+
+function fetchJoinLinks(textSetId: number) {
+    JoinLinkService.getJoinLinks(textSetId)
+        .then(j => {
+            joinLinks = j;
+            redraw()
+        })
+        .catch(() => AlertManager.pushString(t("all.something-went-wrong")));
+}
+
 const JoinLinksList_List = {
     view: ({attrs}: Vnode<{ joinLinks: Array<JoinLink> }>) => m(BaseList, {
         items: attrs.joinLinks,
@@ -34,7 +45,7 @@ const JoinLinksList_List = {
 
                             else if (action == "act_2") {
                                 JoinLinkService.deleteJoinLink(item.textSetId, item.id)
-                                    .then(() => AlertManager.pushString(t("all.deleted-successfully")))
+                                    .then(() => { fetchJoinLinks(item.textSetId); AlertManager.pushString(t("all.deleted-successfully")) })
                             }
                         })
                 },
@@ -46,17 +57,8 @@ const JoinLinksList_List = {
 }
 
 export class JoinLinksList extends BaseComponent<JoinLinksListAttrs, any> {
-    joinLinks: Array<JoinLink> | undefined;
-
-    onbeforeupdate(vnode: Mithril.Vnode<JoinLinksListAttrs, Mithril._NoLifecycle<any>>, old: Mithril.VnodeDOM<JoinLinksListAttrs, Mithril._NoLifecycle<any>>): boolean | void {
-        JoinLinkService.getJoinLinks(vnode.attrs.textSetId)
-            .then(j => {
-                this.joinLinks = j;
-                redraw()
-            })
-            .catch(() => AlertManager.pushString(t("all.something-went-wrong")));
-
-        return super.onbeforeupdate(vnode, old);
+    oninit(vnode: Mithril.Vnode<JoinLinksListAttrs, Mithril._NoLifecycle<any>>): any {
+        fetchJoinLinks(vnode.attrs.textSetId)
     }
 
     override view(vnode: Mithril.Vnode<JoinLinksListAttrs, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
@@ -69,7 +71,7 @@ export class JoinLinksList extends BaseComponent<JoinLinksListAttrs, any> {
                         m("div")
                     ),
 
-                    this.joinLinks ? m(JoinLinksList_List, {joinLinks: this.joinLinks}) : m(".d-none")
+                    joinLinks ? m(JoinLinksList_List, {joinLinks: joinLinks}) : m(".d-none")
                 )
             )
         )
