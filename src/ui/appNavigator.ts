@@ -30,6 +30,10 @@ export class AppNavigator {
         route.set(Links.login);
     }
 
+    public static joinLinkList(textSetId: number) {
+        route.set(Links.joinLinkListLink.replace(":textSetId", textSetId.toString()));
+    }
+
     public static addText(textSetId: number) {
         route.set(`/text-set/${textSetId}/add`);
     }

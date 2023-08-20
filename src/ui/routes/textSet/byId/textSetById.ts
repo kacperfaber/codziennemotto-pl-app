@@ -138,7 +138,7 @@ export function TextSetById(): Mithril.Component<TextSetByIdAttrs, any> {
                             t("all.join-links"),
                             m(ExpandableJoinLinkList, {
                                 joinLinks: joinLinks!!,
-                                showAllOnClick: () => AppNavigator.home()
+                                showAllOnClick: () => AppNavigator.joinLinkList(vnode.attrs.id)
                             })
                         ) : null,
 

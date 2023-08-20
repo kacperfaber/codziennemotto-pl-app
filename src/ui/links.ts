@@ -11,5 +11,6 @@ export const Links = {
     readerByIdLink: "/text-set/:textSetId/reader/:readerId",
     joinUsingLink: "/text-set/join-using-link",
     register: "/register",
-    confirmLink: "/register/confirm/:emailAddress"
+    confirmLink: "/register/confirm/:emailAddress",
+    joinLinkListLink: "/text-set/:textSetId/join-links"
 }

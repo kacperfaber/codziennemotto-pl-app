@@ -4,6 +4,7 @@ import {JoinLink} from "../../../../../services/joinLink/joinLink";
 import {t} from "i18next";
 import {BaseExpandableList} from "../../../base/expandableList/baseExpandableList";
 import {BaseExpandableListItem} from "../../../base/expandableList/item/baseExpandableListItem";
+import {AppNavigator} from "../../../../appNavigator";
 
 export interface ExpandableJoinLinkListAttrs {
     joinLinks: Array<JoinLink>;
@@ -12,7 +13,7 @@ export interface ExpandableJoinLinkListAttrs {
 
 export function ExpandableJoinLinkList(): Mithril.Component<ExpandableJoinLinkListAttrs> {
     function createItem(item: JoinLink): Vnode<any, any> {
-        return m(BaseExpandableListItem, {onClick: () => {}, secondary: `${item.id}`, primary: item.code})
+        return m(BaseExpandableListItem, {onClick: () => {alert("copied")}, secondary: `${item.id}`, primary: item.code})
     }
 
     return {
@@ -20,7 +21,9 @@ export function ExpandableJoinLinkList(): Mithril.Component<ExpandableJoinLinkLi
             button: {
                 text: t("all.show_all"),
                 onClick: () => {
-                    console.error("joinLink-click not implemented yet.")
+                    if (vnode.attrs.showAllOnClick) {
+                        vnode.attrs.showAllOnClick();
+                    }
                 }
             },
             makeItem: (item: JoinLink) => createItem(item),

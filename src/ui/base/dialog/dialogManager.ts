@@ -22,7 +22,7 @@ export class DialogManager {
     }
 
     public static choose(title: string, text: string, option1: string, option2: string): Promise<DialogChooseAnswer | undefined> {
-        let dial = new DialogChoose({title, text, option1, option2});
+        let dial = new DialogChoose({title, text, action1: option1, action2: option2});
         return DialogManager.pushAsync(dial);
     }
 

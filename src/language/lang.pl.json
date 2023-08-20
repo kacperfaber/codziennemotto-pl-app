@@ -17,7 +17,11 @@
     "delete": "Usuń",
     "sign_in": "Zaloguj się",
     "confirmation": "Potwierdzenie",
+    "copy": "Skopiuj",
+    "deleted-successfully": "Usunięto pomyślnie",
+    "copy-success": "Skopiowano do schowka",
     "reader": {
+      "all-readers": "Wszyscy czytający",
       "delete-reader": "Usuń czytającego",
       "reader-is-deleted": "Czytający {{reader}} został usunięty.",
       "could-not-delete": "Nie można było usunąć czytającego, spróbuj ponownie",
@@ -129,5 +133,14 @@
 
     "could-not-register": "Przepraszamy, ale nie można było cie zarejestrować. Sprawdź dane i spróbuj ponownie.",
     "check-email": "Proszę - sprawdź email."
+  },
+
+  "join-links-list": {
+    "choose-dialog": {
+      "title": "Wybierz...",
+      "body": "Co chcesz zrobić z tym linkiem?"
+    },
+    "title": "Lista linków",
+    "body": "Które są dostępne w liście"
   }
 }
