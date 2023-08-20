@@ -6,9 +6,9 @@ import {UserStore} from "../../store/user/userStore";
 import {TextSetStore} from "../../store/textSet/textSetStore";
 
 export interface AuthResult {
-    id: number;
+    userId: number;
     username: string;
-    email: string;
+    userEmail: string;
     token: string;
 }
 
@@ -19,7 +19,7 @@ export class AuthenticationService {
         if (!result) return false;
 
         StorageService.setCurrentAuth(result);
-        UserStore.current(result satisfies User);
+        UserStore.current({id: result.userId, email: result.userEmail, username: result.username} as User);
 
         /* Clear TextSet store to force refresh, when another user will sign in.*/
         await TextSetStore.resetTextSets();
