@@ -7,6 +7,7 @@ import {t} from "i18next";
 import {DialogManager} from "../../base/dialog/dialogManager";
 import {StringAlert} from "../../base/alert/stringAlert";
 import {AppNavigator} from "../../appNavigator";
+import {FormParagraph} from "../privacy/formParagraph";
 
 let username = "";
 let emailAddress = "";
@@ -34,7 +35,7 @@ export class Register extends BaseComponent<any, any> {
     view(vnode: Mithril.Vnode<any, Mithril._NoLifecycle<any>>): Mithril.Children | void | null {
         return Layout.free(
             m("#app_register",
-                Layout.center(
+                Layout.centerNodes(
                     Layout.withHeader(t("register.title"), t("register.body") ?? undefined,
                         m("form.form", {onsubmit: this.onSubmit},
                             m(".form-floating.my-2",
@@ -68,7 +69,9 @@ export class Register extends BaseComponent<any, any> {
 
                             m("button.btn.btn-success[type=submit]", t("all.register_in"))
                         )
-                    )
+                    ),
+
+                    m(FormParagraph)
                 )
             )
         )

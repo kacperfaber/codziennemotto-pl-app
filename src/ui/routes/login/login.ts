@@ -5,6 +5,7 @@ import {AuthenticationService} from "../../../services/auth/authenticationServic
 import {BaseComponent} from "../../base/baseComponent";
 import {AlertManager} from "../../base/alert/alertManager";
 import {AppNavigator} from "../../appNavigator";
+import {FormParagraph} from "../privacy/formParagraph";
 
 export const Login = function () {
     const state = {login: '', password: ''};
@@ -111,7 +112,7 @@ export const Login = function () {
         override view() {
             return Layout.free(
                 m("#app_login",
-                    Layout.center(
+                    Layout.centerNodes(
                         m("form#app_login__form.form", {onsubmit: onSubmit},
 
                             m(".form-floating#app_login__form__input_login",
@@ -129,6 +130,8 @@ export const Login = function () {
                                 m("label#app_login__login_error.disabled", {style: {color: 'red'}}, t("login.login_error")),
                                 m("label#app_login__login_success.disabled", {style: {color: 'green'}}, t("login.login_success"))
                             ),
+
+                            m(FormParagraph),
 
                             m("button#app_login__form__submit.btn.btn-primary", {type: 'submit'},
                                 m("span.content", t("login.submit")),

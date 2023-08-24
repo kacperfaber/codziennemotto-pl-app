@@ -185,6 +185,8 @@
     "cookies": {
       "title": "Strona używa plików cookie",
       "body": "W celu zapewnienia użytkownikowi wygody strona używa plików cookie do zapisu danych. Jeśli nie wyrażasz na to zgody, proszę zrezygnować z korzystania z aplikacji."
-    }
+    },
+
+    "form-paragraph": "Wypełnienie formularza oznacza, że podane w nim dane osobowe będą przetwarzane w sposób opisany w zakładce informacje [/privacy]. Zasady przetwarzania i informacje o administratorze znajdziesz tu: "
   }
 }
