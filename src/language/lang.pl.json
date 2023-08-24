@@ -1,5 +1,6 @@
 {
   "all": {
+    "privacy": "Informacje",
     "save": "Zapisz",
     "instead-register-in": "Zamiast tego, zarejestruj się...",
     "home": "Strona główna",
@@ -175,5 +176,15 @@
     "no-consent": "Nie wyrażam zgody",
     "click-to-change-consent": "Kliknij, by wyrazić lub nie wyrazić zgody",
     "allow-everything-to-continue": "Po wyrażeniu wymaganych zgód będzie można przejść dalej"
+  },
+
+  "privacy": {
+    "title": "Prywatność",
+    "body": "Klauzula RODO jest dostępna po kliknięciu w link poniżej",
+
+    "cookies": {
+      "title": "Strona używa plików cookie",
+      "body": "W celu zapewnienia użytkownikowi wygody strona używa plików cookie do zapisu danych. Jeśli nie wyrażasz na to zgody, proszę zrezygnować z korzystania z aplikacji."
+    }
   }
 }

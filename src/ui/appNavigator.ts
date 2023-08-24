@@ -2,6 +2,10 @@ import route from "mithril/route";
 import {Links} from "./links";
 
 export class AppNavigator {
+
+    public static privacy() {
+        route.set(Links.privacy);
+    }
     public static textSetById(id: number): void {
         route.set(`/text-set/by-id/${id}`);
     }

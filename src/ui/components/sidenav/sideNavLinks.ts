@@ -13,7 +13,8 @@ const LinkList: Array<Link> = [
     {visibility: "only_user", onClick: AppNavigator.home, text: () => t("all.home")},
     {visibility: "only_user", onClick: AppNavigator.allTextSets, text: () => t("all.all_text_set")},
     {visibility: "only_user", onClick: AppNavigator.createTextSet, text: () => t("all.create-text-set")},
-    {visibility: "only_user", onClick: AppNavigator.joinUsingLink, text: () => t("join-links.join-using-link")}
+    {visibility: "only_user", onClick: AppNavigator.joinUsingLink, text: () => t("join-links.join-using-link")},
+    {visibility: "both", onClick: AppNavigator.privacy, text: () => t("all.privacy")}
 ];
 
 interface SideNavLinkAttrs {

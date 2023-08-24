@@ -14,6 +14,7 @@ import {RegisterRoute} from "./routes/register/registerRoute";
 import {ConfirmRoute} from "./routes/register/confirm/confirmRoute";
 import {JoinLinksListRoute} from "./routes/textSet/joinLinks/joinLinksListRoute";
 import {RequirePrivacy} from "./routes/privacy/requirePrivacy";
+import {Privacy} from "./routes/privacy/privacy";
 
 export const Routes = {
     [Links.welcome]: WelcomeRoute,
@@ -41,5 +42,6 @@ export const Routes = {
 
     [Links.joinLinkListLink]: JoinLinksListRoute,
 
-    [Links.requirePrivacy]: RequirePrivacy
+    [Links.requirePrivacy]: RequirePrivacy,
+    [Links.privacy]: Privacy
 }

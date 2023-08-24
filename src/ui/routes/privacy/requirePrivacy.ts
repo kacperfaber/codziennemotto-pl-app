@@ -4,6 +4,7 @@ import {t} from "i18next";
 import {StorageService} from "../../../services/storage/storageService";
 import {AppNavigator} from "../../appNavigator";
 import {Layout} from "../../layout";
+import {RodoUrl} from "./rodoUrl";
 
 let cookieAllowed = false;
 let rodoAllowed = false;
@@ -18,7 +19,7 @@ function rodoClick() {
     redraw();
 }
 
-const rodoUrl = "/rodo.txt";
+
 
 export const RequirePrivacy: Mithril.Component = {
     view: () => {
@@ -28,7 +29,7 @@ export const RequirePrivacy: Mithril.Component = {
                     t("require-privacy.title"),
                     t("require-privacy.body") ?? undefined,
                     m("div", {style:{'margin-bottom': '25px'}},
-                        m("button.btn.btn-link.my-4", {onclick: () => window.location.replace(rodoUrl)}, t("require-privacy.click-to-see-rodo")),
+                        m("button.btn.btn-link.my-4", {onclick: () => window.location.replace(RodoUrl)}, t("require-privacy.click-to-see-rodo")),
                         m("br"),
                         m(`button.btn.btn-${rodoAllowed ? 'success' : 'secondary'}`, {onclick: rodoClick}, rodoAllowed ? t("require-privacy.consent") : t("require-privacy.no-consent")),
                         m("p.paragraph", t("require-privacy.click-to-change-consent"))

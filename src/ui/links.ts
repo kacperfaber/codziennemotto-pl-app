@@ -13,5 +13,6 @@ export const Links = {
     register: "/register",
     confirmLink: "/register/confirm/:emailAddress",
     joinLinkListLink: "/text-set/:textSetId/join-links",
-    requirePrivacy: "/require-privacy"
+    requirePrivacy: "/require-privacy",
+    privacy: "/privacy"
 }
