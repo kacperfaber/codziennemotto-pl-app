@@ -2,6 +2,7 @@ import {AuthResult} from "../auth/authenticationService";
 
 export class StorageKeys {
     static readonly auth = "_token_";
+    static readonly consentPrivacy = "_consent_privacy_";
 }
 
 export class StorageService {
@@ -42,5 +43,13 @@ export class StorageService {
     static getCurrentToken(): string | undefined {
         const auth = StorageService.getCurrentAuth();
         return auth?.token;
+    }
+
+    static consentPrivacy(x: boolean = true) {
+        StorageService.setItem(StorageKeys.consentPrivacy, x);
+    }
+
+    static isPrivacyConsented(): boolean {
+        return StorageService.getItem<boolean>(StorageKeys.consentPrivacy) ?? false;
     }
 }

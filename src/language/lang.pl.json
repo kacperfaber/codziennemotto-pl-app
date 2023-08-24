@@ -1,5 +1,6 @@
 {
   "all": {
+    "save": "Zapisz",
     "instead-register-in": "Zamiast tego, zarejestruj się...",
     "home": "Strona główna",
     "logout": "Wyloguj się",
@@ -158,5 +159,21 @@
         "placeholder": "Opis listy"
       }
     }
+  },
+
+  "require-privacy": {
+    "title": "Prywatność",
+    "body": "Wymagane jest zaakceptowanie tych postanowień, przed kontynuowaniem",
+    "click-to-see-rodo": "Kliknij, żeby wyświetlić postanowienia RODO",
+    "see-rodo": "Wyświetl RODO",
+
+    "cookies": {
+      "title": "Strona używa plików cookie",
+      "body": "W celu zapewnienia użytkownikowi wygody strona używa plików cookie do zapisu danych. Jeśli nie wyrażasz na to zgody, proszę zrezygnować z korzystania z aplikacji."
+    },
+    "consent": "Wyrażam zgodę",
+    "no-consent": "Nie wyrażam zgody",
+    "click-to-change-consent": "Kliknij, by wyrazić lub nie wyrazić zgody",
+    "allow-everything-to-continue": "Po wyrażeniu wymaganych zgód będzie można przejść dalej"
   }
 }

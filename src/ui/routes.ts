@@ -13,6 +13,7 @@ import {JoinUsingLinkRoute} from "./routes/textSet/joinUsingLink/joinUsingLinkRo
 import {RegisterRoute} from "./routes/register/registerRoute";
 import {ConfirmRoute} from "./routes/register/confirm/confirmRoute";
 import {JoinLinksListRoute} from "./routes/textSet/joinLinks/joinLinksListRoute";
+import {RequirePrivacy} from "./routes/privacy/requirePrivacy";
 
 export const Routes = {
     [Links.welcome]: WelcomeRoute,
@@ -38,5 +39,7 @@ export const Routes = {
     [Links.register]: RegisterRoute,
     [Links.confirmLink]: ConfirmRoute,
 
-    [Links.joinLinkListLink]: JoinLinksListRoute
+    [Links.joinLinkListLink]: JoinLinksListRoute,
+
+    [Links.requirePrivacy]: RequirePrivacy
 }

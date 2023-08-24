@@ -537,3 +537,12 @@ body, html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.require-privacy-frame {
+    padding: 10px;
+    border: 1px solid white;
+}
+
+p.paragraph {
+    color: gray;
+}

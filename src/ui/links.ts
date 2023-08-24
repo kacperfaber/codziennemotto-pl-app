@@ -12,5 +12,6 @@ export const Links = {
     joinUsingLink: "/text-set/join-using-link",
     register: "/register",
     confirmLink: "/register/confirm/:emailAddress",
-    joinLinkListLink: "/text-set/:textSetId/join-links"
+    joinLinkListLink: "/text-set/:textSetId/join-links",
+    requirePrivacy: "/require-privacy"
 }

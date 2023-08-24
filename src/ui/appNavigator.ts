@@ -61,4 +61,8 @@ export class AppNavigator {
     public static createTextSet() {
         route.set(Links.createNewTextSet);
     }
+
+    public static requirePrivacy() {
+        route.set(Links.requirePrivacy);
+    }
 }
