@@ -37,9 +37,12 @@
       "logged_in_successfully": "Zalogowano pomyślnie",
       "login_error": "Błąd podczas logowania"
     },
-    "register_in": "Zarejestruj się"
+    "register_in": "Zarejestruj się",
+    "login_in": "Zaloguj się"
   },
   "login": {
+    "title": "Zaloguj się",
+    "body": "Żeby używać aplikacji",
     "submit": "Zaloguj się",
     "login_success": "Zalogowano pomyślnie",
     "login_error": "Błąd podczas logowania",

@@ -80,7 +80,7 @@ body, html {
 }
 
 #app_login__form {
-    padding: 25px;
+    /*padding: 25px;*/
 }
 
 #app_login__form__input_login, #app_login__form__input_password {
