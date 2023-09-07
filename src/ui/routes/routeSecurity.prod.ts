@@ -4,7 +4,7 @@ import {AppNavigator} from "../appNavigator";
 import {StorageService} from "../../services/storage/storageService";
 
 class RouteSecurityProd {
-    static async authenticatedOrWelcome(requestedPath: string) {
+    async authenticatedOrWelcome(requestedPath: string) {
         if (!StorageService.isPrivacyConsented()){
             AppNavigator.requirePrivacy();
         }
@@ -12,7 +12,7 @@ class RouteSecurityProd {
         if (!await AuthenticationService.current()) AppNavigator.welcome();
     }
 
-    static async anonymousOrHome(requestedPath: string) {
+    async anonymousOrHome(requestedPath: string) {
         if (!StorageService.isPrivacyConsented()){
             AppNavigator.requirePrivacy();
         }

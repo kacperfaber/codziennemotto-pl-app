@@ -13,7 +13,7 @@ module.exports = merge(common, {
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
         alias: {
-            '@routeSecurity': path.resolve(__dirname, "src/ui/routes/routeSecurity.dev.ts")
+            '@routeSecurity': path.resolve(__dirname, "src/ui/routes/routeSecurity.prod.ts")
         }
     },
     plugins: [
