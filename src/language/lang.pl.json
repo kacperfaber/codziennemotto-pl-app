@@ -190,6 +190,12 @@
       "body": "W celu zapewnienia użytkownikowi wygody strona używa plików cookie do zapisu danych. Jeśli nie wyrażasz na to zgody, proszę zrezygnować z korzystania z aplikacji."
     },
 
+    "third-party-licenses": {
+      "title": "Licencje",
+      "body": "Tu znajdziesz licencje osób trzecich",
+      "see": "Zobacz licencję stron trzecich"
+    },
+
     "form-paragraph": "Wypełnienie formularza oznacza, że podane w nim dane osobowe będą przetwarzane w sposób opisany w zakładce informacje [/privacy]. Zasady przetwarzania i informacje o administratorze znajdziesz tu: "
   }
 }

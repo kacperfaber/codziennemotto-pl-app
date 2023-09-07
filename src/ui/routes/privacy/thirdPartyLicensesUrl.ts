@@ -1,0 +1,1 @@
+export const ThirdPartyLicensesUrl = "/generated/third-party-licenses.txt";
