@@ -35,6 +35,11 @@ module.exports = {
                 {
                     from: 'node_modules/bootstrap-dark-5/dist/css/bootstrap-night.css',
                     to: path.resolve(__dirname, 'www/generated/css/bootstrap-night.css')
+                },
+
+                {
+                    from: 'third-party-licenses.txt',
+                    to: path.resolve(__dirname, 'www/generated/third-party-licenses.txt')
                 }
             ]
         })
