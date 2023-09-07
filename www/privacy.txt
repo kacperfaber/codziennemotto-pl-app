@@ -1,0 +1,53 @@
+Polityka prywatności codziennemotto.pl
+
+Data wejścia w życie: 01.09.2023r.
+
+Twoja prywatność jest dla nas ważna. W tym dokumencie opisujemu,
+jakie informacje zbieramy od Ciebie, w jaki sposób je wykorzystujemy
+oraz jak dbamy o ochronę Twoich danych osobowych
+
+1. Rodzaje zbieranych danych
+
+    Podczas korzystania z serwisu zbieramy różne rodzaje danych osobowych, w tym:
+
+    1). Dane osobowe: Adres email, nazwa użytkownika. Zbieramy tylko wtedy, gdy są
+    nam potrzebne do określonych celów np. Rejestracji
+
+    2). Dane logowania: Takie jak adresy IP, rodzaj przeglądarki, dane o urządzaniu, czas dostępu itp.
+    3). Dane zawartości: Dane które zostawiasz korzystając z serwisu, np. komentarze, wiadomości
+
+2. Cel zbierania danych
+
+    Zbieramy Twoje dane w celu:
+
+    - Obsługi twojego konta
+    - Zapewniania bezpieczeństwa Twoich danych
+    - Dostarczenia ci informacji, których oczekujesz od serwisu
+
+3. Udostępnianie danych
+
+    Nie sprzedajemy, nie wynajmujemy i nie udostępniamy Twoich danych osobowych
+    osobom trzecim bez Twojej wyraźnej zgody, chyba że jest to niezbędne
+    do wykonania umowy lub zgodnie z obowiązującym prawem.
+
+4. Ochrona danych
+
+    Dbamy o bezpieczeństwo Twoich danych osobowych, stosując odpowiednie środki techniczne
+    i organizacyjne, aby chronić je przed utratą, nieuprawnionym dostępem, zmianą lub rozpowszechnianiem.
+    Proszę pamiętać, że serwis w wersji BETA może być niedopracowany.
+
+5. Prawa użytkowników
+
+    Masz prawo do dostępu do swoich danych osobowych, ich poprawiania, usuwania, ograniczania przetwarzania oraz przenoszenia.
+    Możesz także wycofać zgodę na przetwarzanie danych w dowolnym momencie.
+
+6. Kontakt
+
+    Jeśli masz pytania dotyczące naszej polityki prywatności lub chcesz skorzystać z praw związanych z
+    ochroną danych osobowych, skontaktuj się z nami pod adresem 'admin@codziennemotto.pl'.
+
+7. Zmiany w polityce prywatności
+
+    Mamy prawo do wprowadzania zmian w naszej polityce prywatności.
+    Wszelkie zmiany będą publikowane na tej stronie i wchodzą w życie od
+    daty ich opublikowania.

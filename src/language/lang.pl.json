@@ -171,6 +171,8 @@
     "click-to-see-rodo": "Kliknij, żeby wyświetlić postanowienia RODO",
     "see-rodo": "Wyświetl RODO",
 
+    "click-to-see-privacy": "Kliknij, aby wyświetlić naszą politykę prywatności",
+
     "cookies": {
       "title": "Strona używa plików cookie",
       "body": "W celu zapewnienia użytkownikowi wygody strona używa plików cookie do zapisu danych. Jeśli nie wyrażasz na to zgody, proszę zrezygnować z korzystania z aplikacji."
@@ -184,6 +186,11 @@
   "privacy": {
     "title": "Prywatność",
     "body": "Klauzula RODO jest dostępna po kliknięciu w link poniżej",
+
+    "privacy": {
+      "title": "Polityka prywatności",
+      "body": "Polityka prywatności jest dostępna po kliknięciu w link poniżej"
+    },
 
     "cookies": {
       "title": "Strona używa plików cookie",
