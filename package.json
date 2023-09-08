@@ -11,10 +11,10 @@
     "fontello-open": "fontello-cli --config www/icons/config.json open",
     "fontello-install": "fontello-cli --config www/icons/config.json --css www/icons/css --font www/icons/font install",
     "setup": "npm run fontello-install && echo Setup OK.",
-    "run-dev": "npx tsc && npm run generate-license-report && npm run webpack-dev && serve www",
+    "run-dev": "npm run generate-license-report && npm run webpack-dev && serve www",
     "webpack-clean": "rmdir /S /Q www\\generated",
     "generate-license-report":  "npx generate-license-file --input package.json --output third-party-licenses.txt --overwrite",
-    "build-prod": "npx tsc && npm run generate-license-report && npm run webpack-prod"
+    "build-prod": "npm run generate-license-report && npm run webpack-prod"
   },
   "keywords": [],
   "author": "Kacper Faber",
