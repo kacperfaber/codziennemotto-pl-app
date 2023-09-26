@@ -3,6 +3,8 @@ Cross-Platform Application for codziennemotto.pl
 <bR>
 I made with ❤ in Mithril and TypeScript.
 
+<img src="assets/banner.png"/>
+
 ## Installation
 
 
