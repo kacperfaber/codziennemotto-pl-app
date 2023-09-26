@@ -1,5 +1,7 @@
 # CodzienneMotto.pl
-Cross-Platform Application for codziennemotto.pl
+Responsive Cross-Platform Application for codziennemotto.pl
+
+**CodzienneMotto.pl** allows you to create a lists of daily quotes, invite users to join your list and schedule quote to specific day
 <bR>
 I made with ❤ in Mithril and TypeScript.
 
